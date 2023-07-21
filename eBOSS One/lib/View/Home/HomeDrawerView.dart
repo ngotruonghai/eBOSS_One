@@ -34,7 +34,7 @@ class _DrawerHomeState extends State<DrawerHome> {
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Icon(Icons.account_balance_wallet_rounded),
                         ),
-                        Text("Báo cáo công việc",style: TextStyle(fontFamily: "Roboto",
+                        Text("Quản lý nhiệm vụ",style: TextStyle(fontFamily: "Roboto",
                             fontSize: 15),)
                       ],
                     ),

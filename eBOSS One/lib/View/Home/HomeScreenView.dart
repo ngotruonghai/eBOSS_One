@@ -73,7 +73,7 @@ class _HomeScreen extends State<HomeScreen> {
                                   ),
                                   child: SizedBox(
                                     height: 50,
-                                    width: 150,
+                                    width: 100,
                                     child: ElevatedButton(
                                       onPressed: () {},
                                       child: Text(
@@ -101,7 +101,7 @@ class _HomeScreen extends State<HomeScreen> {
                                   ),
                                   child: SizedBox(
                                     height: 50,
-                                    width: 150,
+                                    width: 100,
                                     child: ElevatedButton(
                                       onPressed: () {},
                                       child: Text(
