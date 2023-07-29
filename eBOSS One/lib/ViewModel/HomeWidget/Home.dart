@@ -1,6 +1,9 @@
+import 'package:eboss_one/View/Login/LoginLayout.dart';
 import 'package:flutter/material.dart';
 import '../../View/Home/HomeDrawerView.dart';
 import '../../View/Home/HomeScreenView.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 class Home extends StatefulWidget {
   const Home({
@@ -127,7 +130,15 @@ class Screen3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('Screen 3'),
+      child: ElevatedButton(
+        onPressed: () async {
+          final SharedPreferences prefs = await SharedPreferences.getInstance();
+          await prefs.remove('Token');
+          Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => Login()));
+        },
+        child: Text("Đăng xuất"),
+      ),
     );
   }
 }

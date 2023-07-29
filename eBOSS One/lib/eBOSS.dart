@@ -2,10 +2,10 @@ import 'package:eboss_one/View/Login/LoginLayout.dart';
 import 'package:flutter/material.dart';
 import 'ViewModel/HomeWidget/Home.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class eBOSS_One extends StatelessWidget {
   const eBOSS_One({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -15,14 +15,19 @@ class eBOSS_One extends StatelessWidget {
     );
   }
 }
-class HomeWidget extends StatelessWidget {
-  const HomeWidget({
+
+class HomeWidget extends StatefulWidget {
+  HomeWidget({
     super.key,
   });
-
+  @override
+  State<HomeWidget> createState() => _HomeWidgetState();
+}
+class _HomeWidgetState extends State<HomeWidget> {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
+      duration: 10000,
       splash: Column(
         children: [
           Image.asset(
@@ -48,9 +53,7 @@ class HomeWidget extends StatelessWidget {
                   child: Text(
                     "Vì doanh nghiệp mà sáng tạo",
                     style: TextStyle(
-                        fontSize: 13,
-                        color: Colors.grey,
-                        fontFamily: 'Roboto'),
+                        fontSize: 13, color: Colors.grey, fontFamily: 'Roboto'),
                   ),
                 )
               ],
@@ -58,10 +61,35 @@ class HomeWidget extends StatelessWidget {
           ),
         ],
       ),
-      nextScreen: Login(),
-      duration: 1000,
+      nextScreen: CheckLoginToken(),
       splashIconSize: 250,
       //splashTransition: SplashTransition.rotationTransition,
     );
   }
 }
+
+class CheckLoginToken extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: FutureBuilder<bool>(
+        future: isLoggedIn(),
+        builder: (context, snapshot) {
+          if (snapshot.data == true) {
+            // Người dùng đã đăng nhập, chuyển đến màn hình chính
+            return Home();
+          } else {
+            // Người dùng chưa đăng nhập, chuyển đến màn hình đăng nhập
+            return Login();
+          }
+        },
+      ),
+    );
+  }
+
+  Future<bool> isLoggedIn() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.containsKey('Token');
+  }
+}
+
