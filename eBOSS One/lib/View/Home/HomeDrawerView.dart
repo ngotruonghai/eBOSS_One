@@ -14,7 +14,7 @@ class _DrawerHomeState extends State<DrawerHome> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Color(0xFF70A1FF),
+      backgroundColor: const Color(0xFF70A1FF),
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Danh mục"),
@@ -58,7 +58,7 @@ class _DrawerHomeState extends State<DrawerHome> {
                             padding: const EdgeInsets.symmetric(horizontal: 10),
                             child: Icon(Icons.add_chart_outlined),
                           ),
-                          Text("Lịch ",style: TextStyle(fontFamily: "Roboto",
+                          Text("Quản lý chấm công",style: TextStyle(fontFamily: "Roboto",
                               fontSize: 15),)
                         ],
                       ),

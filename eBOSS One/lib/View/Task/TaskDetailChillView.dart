@@ -6,8 +6,10 @@ class TaskDetailView extends StatelessWidget{
   });
   @override
   Widget build(BuildContext context) {
-    return Material(
-      child: Text("ok")
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Chi tiết nhiệm vụ"),
+      ),
     );
   }
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Model/Login/LoginResponseModel.dart';
 import '../../Services/NetWork/NetWorkRequest.dart';
-import '../HomeWidget/Home.dart';
+import '../../View/Home/HomeView.dart';
 
 class MailLogin extends StatefulWidget {
   MailLogin({
@@ -18,14 +18,16 @@ class _MailLoginState extends State<MailLogin> {
   TextEditingController txtUser = TextEditingController();
   TextEditingController txtPassWord = TextEditingController();
   int check = 0;
-  String logerror = "";
+  String? logError = "";
+
   void _LoginUser(BuildContext context) async {
     try {
       int check = 1;
+      FocusScope.of(context).unfocus();
 
       if(txtUser.text.isEmpty || txtPassWord.text.isEmpty)
         {
-          logerror="Kiểm tra lại tài khoản hoặc mật khẩu!";
+          logError="Kiểm tra lại tài khoản hoặc mật khẩu!";
         }
       else
         {
@@ -33,14 +35,13 @@ class _MailLoginState extends State<MailLogin> {
             "userName": txtUser.text,
             "password": txtPassWord.text
           };
-          final response =
-          await NetWorkRequest.post("/eBOSS/api/Login/Login", request);
+          final response = await NetWorkRequest.post("/eBOSS/api/Login/LoginUser", request);
           final listData = LoginResponseModel.fromJson(response);
           if (listData.data?.token != null) {
             check = 1;
           } else {
             check = 0;
-            logerror="Sai tài khoản hoặc mật khẩu!";
+            logError="Sai tài khoản hoặc mật khẩu!";
           }
           //   Navigator.pushReplacement(
           //       context,
@@ -48,15 +49,15 @@ class _MailLoginState extends State<MailLogin> {
           // };
           if (check == 1) {
             final SharedPreferences prefs = await SharedPreferences.getInstance();
-            String? token = listData.data?.token;
-            await prefs.setString("Token", token.toString());
+            await prefs.setString("Token", listData.data!.token.toString());
+            await prefs.setString("UserName", listData.data!.userName.toString());
 
             await Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => Home()));
+                context, MaterialPageRoute(builder: (context) => HomeView()));
           }
         }
     } catch (e) {
-      logerror = e.toString();
+      logError = e.toString();
       check = -1;
     }
     setState(() {
@@ -87,7 +88,7 @@ class _MailLoginState extends State<MailLogin> {
                   padding: const EdgeInsets.only(top: 50),
                   child: (checkLogin == 1)
                       ? Text("")
-                      : MessageError(mess:logerror ),
+                      : MessageError(mess:logError ),
                 ),
                 Padding(
                     padding: const EdgeInsets.only(top: 10),
@@ -97,7 +98,7 @@ class _MailLoginState extends State<MailLogin> {
                           controller: txtUser,
                           keyboardType: TextInputType.text,
                           decoration: InputDecoration(
-                              hintText: "Tài khoảng",
+                              hintText: "Tài khoản",
                               border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(18),
                                   borderSide: BorderSide.none),
@@ -164,7 +165,7 @@ class _MailLoginState extends State<MailLogin> {
                   padding: const EdgeInsets.only(top: 30),
                   child: (checkLogin == -1)
                       ? MessageErrorCatch(
-                          mess: logerror,
+                          mess: logError,
                         )
                       : Text(""),
                 ),

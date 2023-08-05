@@ -1,5 +1,5 @@
 class HostService{
    static String get Host_Mobile{
-     return "http://eboss.somee.com";
+     return "http://192.168.88.134:8022";
    }
 }

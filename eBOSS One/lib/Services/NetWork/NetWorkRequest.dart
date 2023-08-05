@@ -3,14 +3,11 @@ import 'package:http/http.dart' as http;
 import '../BaseServices/HostService.dart';
 
 class NetWorkRequest {
-  String? _url;
-
   NetWorkRequest() {}
 
   static Future<Map<String, dynamic>> post(
       String endpoint, Map<String, dynamic> data) async {
     String url = HostService.Host_Mobile + endpoint;
-    print(url);
     // Post API
     final response = await http.post(
       Uri.parse(url),

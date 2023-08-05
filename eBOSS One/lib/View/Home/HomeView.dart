@@ -5,16 +5,16 @@ import '../../View/Home/HomeScreenView.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 
-class Home extends StatefulWidget {
-  const Home({
+class HomeView extends StatefulWidget {
+  const HomeView({
     super.key,
   });
 
   @override
-  State<Home> createState() => _HomeState();
+  State<HomeView> createState() => _HomeViewState();
 }
 
-class _HomeState extends State<Home> {
+class _HomeViewState extends State<HomeView> {
   int _selectedIndex = 0;
   final List<Widget> _screens = [
     HomeScreen(),
@@ -99,7 +99,7 @@ class _AppBarBootomState extends State<AppBarBootom> {
       backgroundColor: const Color(0xFF70A1FF),
       type: BottomNavigationBarType.fixed,
       selectedItemColor:
-          const Color(0xFF0c2461), // Set the color of the selected tab
+      const Color(0xFF0c2461), // Set the color of the selected tab
       unselectedItemColor: Colors.black38,
       items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: "Trang chủ"),

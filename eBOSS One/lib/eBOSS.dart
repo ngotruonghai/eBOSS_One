@@ -1,6 +1,6 @@
 import 'package:eboss_one/View/Login/LoginLayout.dart';
 import 'package:flutter/material.dart';
-import 'ViewModel/HomeWidget/Home.dart';
+import 'View/Home/HomeView.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -27,7 +27,7 @@ class _HomeWidgetState extends State<HomeWidget> {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-      duration: 10000,
+      duration: 3000,
       splash: Column(
         children: [
           Image.asset(
@@ -77,7 +77,7 @@ class CheckLoginToken extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.data == true) {
             // Người dùng đã đăng nhập, chuyển đến màn hình chính
-            return Home();
+            return HomeView();
           } else {
             // Người dùng chưa đăng nhập, chuyển đến màn hình đăng nhập
             return Login();
