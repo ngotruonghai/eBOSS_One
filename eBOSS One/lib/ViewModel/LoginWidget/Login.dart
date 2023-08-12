@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../Model/Login/LoginResponseModel.dart';
+import '../../Services/BaseServices/SharedPreferencesService.dart';
 import '../../Services/NetWork/NetWorkRequest.dart';
 import '../../View/Home/HomeView.dart';
 
@@ -49,8 +50,9 @@ class _MailLoginState extends State<MailLogin> {
           // };
           if (check == 1) {
             final SharedPreferences prefs = await SharedPreferences.getInstance();
-            await prefs.setString("Token", listData.data!.token.toString());
-            await prefs.setString("UserName", listData.data!.userName.toString());
+            SharedPreferencesService.setString(KeyServices.KeyToken, listData.data!.token.toString());
+            SharedPreferencesService.setString(KeyServices.KeyUserName, listData.data!.userName.toString());
+            SharedPreferencesService.setString(KeyServices.KeyUserID, listData.data!.userID.toString());
 
             await Navigator.pushReplacement(
                 context, MaterialPageRoute(builder: (context) => HomeView()));

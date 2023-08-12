@@ -1,5 +1,6 @@
 import 'package:eboss_one/View/Login/LoginLayout.dart';
 import 'package:flutter/material.dart';
+import 'Services/BaseServices/SharedPreferencesService.dart';
 import 'View/Home/HomeView.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -80,7 +81,7 @@ class CheckLoginToken extends StatelessWidget {
             return HomeView();
           } else {
             // Người dùng chưa đăng nhập, chuyển đến màn hình đăng nhập
-            return Login();
+            return Login();//Login();
           }
         },
       ),
@@ -89,6 +90,8 @@ class CheckLoginToken extends StatelessWidget {
 
   Future<bool> isLoggedIn() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    // Khởi chạy SharedPreferenc đầu tiên mới lấy được bộ nhớ
+    await SharedPreferencesService.init();
     return prefs.containsKey('Token');
   }
 }

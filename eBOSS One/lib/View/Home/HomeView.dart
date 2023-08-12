@@ -45,7 +45,7 @@ class _HomeViewState extends State<HomeView> {
           ],
         ),
         centerTitle: true,
-        backgroundColor: const Color(0xFF70A1FF),
+        backgroundColor: const Color(0xFFe67e22),
         leading: Builder(builder: (context) {
           return IconButton(
             icon: const Icon(
@@ -94,24 +94,34 @@ class _AppBarBootomState extends State<AppBarBootom> {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
-      currentIndex: IndexTab,
-      backgroundColor: const Color(0xFF70A1FF),
-      type: BottomNavigationBarType.fixed,
-      selectedItemColor:
-      const Color(0xFF0c2461), // Set the color of the selected tab
-      unselectedItemColor: Colors.black38,
-      items: const [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Trang chủ"),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.add_to_photos_outlined), label: "Chức năng"),
-        BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Cài đặt"),
-        BottomNavigationBarItem(
-            icon: Icon(Icons.account_box_rounded), label: "Hồ sơ")
-      ],
-      onTap: (index) {
-        clickOnTab(index);
-      },
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(
+          top: BorderSide(
+            color: Colors.grey,
+            width: 1.5,
+          ),
+        ),
+        ),
+      child:  BottomNavigationBar(
+        currentIndex: IndexTab,
+        backgroundColor: const Color(0xFFecf0f1),
+        type: BottomNavigationBarType.fixed,
+        selectedItemColor:
+        const Color(0xFFd35400), // Set the color of the selected tab
+        unselectedItemColor: Colors.black38,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: "Trang chủ"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.add_to_photos_outlined), label: "Chức năng"),
+          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Cài đặt"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_box_rounded), label: "Hồ sơ")
+        ],
+        onTap: (index) {
+          clickOnTab(index);
+        },
+      ),
     );
   }
 }

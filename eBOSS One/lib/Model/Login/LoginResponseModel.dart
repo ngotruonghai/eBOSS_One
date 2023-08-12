@@ -25,13 +25,15 @@ class LoginResponseModel {
 class Data {
   String? token;
   String? message;
+  String? userID;
   String? userName;
 
-  Data({this.token, this.message, this.userName});
+  Data({this.token, this.message, this.userID, this.userName});
 
   Data.fromJson(Map<String, dynamic> json) {
     token = json['token'];
     message = json['message'];
+    userID = json['userID'];
     userName = json['userName'];
   }
 
@@ -39,6 +41,7 @@ class Data {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['token'] = this.token;
     data['message'] = this.message;
+    data['userID'] = this.userID;
     data['userName'] = this.userName;
     return data;
   }
