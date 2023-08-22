@@ -31,7 +31,7 @@ class ListTask extends StatelessWidget {
                         size: 30, color: Color(0xFF009432)),
                   ),
                   Text(
-                    "MDA23060250",
+                    data.workID.toString(),
                     style: TextStyle(
                         fontSize: 15,
                         fontFamily: "Roboto",
@@ -86,7 +86,7 @@ class ListTask extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           color: Colors.grey)),
                   Expanded(
-                    child: Text("Anh Vũ",
+                    child: Text(data.handlerName.toString(),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         style: TextStyle(fontSize: 13, fontFamily: "Roboto")),
@@ -106,7 +106,7 @@ class ListTask extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           color: Colors.grey)),
                   Expanded(
-                    child: Text("Anh Lễ",
+                    child: Text(data.navigatorName.toString(),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         style: TextStyle(fontSize: 13, fontFamily: "Roboto")),
@@ -126,7 +126,7 @@ class ListTask extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           color: Colors.grey)),
                   Expanded(
-                    child: Text("Trung Đức",
+                    child: Text(data.receiverName.toString(),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         style: TextStyle(fontSize: 13, fontFamily: "Roboto")),
@@ -147,9 +147,9 @@ class ListTask extends StatelessWidget {
                           color: Colors.grey)),
                   Expanded(
                     child: Text(
-                        "Phiếu báo cáo kiểm soát sản xuất Phiếu báo cáo kiểm soát sản xuất Phiếu báo cáo kiểm soát sản xuất",
+                        data.workAllSummary.toString(),
                         overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
+                        maxLines: 2,
                         style: TextStyle(fontSize: 13, fontFamily: "Roboto")),
                   ),
                 ],
@@ -167,7 +167,7 @@ class ListTask extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                           color: Colors.grey)),
                   Expanded(
-                    child: Text(data.planStartDate.toString(),
+                    child: Text(data.recordDate.toString(),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                         style: TextStyle(
