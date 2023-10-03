@@ -21,7 +21,6 @@ class _TaskDetailState extends State<TaskDetail> {
 
     final responses = await NetWorkRequest.PostJWT("/eBOSS/api/MissionUnFinish/DataMissionUnFinish", request);
     final MissionUnFinish = DataMissionUnFinishModel.fromJson(responses);
-    print(responses);
     setState(() {
       listdata = MissionUnFinish.data;
     });
@@ -112,7 +111,7 @@ class _TaskDetailState extends State<TaskDetail> {
                     if (listdata == null) // Sử dụng if để kiểm tra điều kiện
                      Center(
                        child:  Container(
-                         child: Text("Loading..."),
+                         child: Text("Đang tải dữ liệu vui lòng đợi..."),
                        ),
                      )
                     else

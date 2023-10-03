@@ -43,7 +43,7 @@ class ListTask extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => TaskDetailView()),
+                            builder: (context) => TaskDetailView( workID: data.workID.toString())),
                       );
                     },
                     child: Icon(
@@ -137,7 +137,7 @@ class ListTask extends StatelessWidget {
             Container(
               margin: const EdgeInsets.only(top: 15),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text("Chi tiết: ",
                       style: TextStyle(

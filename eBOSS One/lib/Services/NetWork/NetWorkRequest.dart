@@ -39,9 +39,9 @@ class NetWorkRequest {
     if (response.statusCode >= 200 && response.statusCode < 300) {
       // Trả về dữ liệu đã được giải mã từ JSON
       return json.decode(response.body);
-    } else {
+    }  else {
       // Xử lý lỗi và thông báo cho phía gọi
-      throw Exception('Response Error Log: ${response.statusCode}.');
+      throw Exception('Response Error Log: ${response.statusCode.toString()}.');
     }
   }
 }
