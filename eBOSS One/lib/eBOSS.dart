@@ -81,7 +81,7 @@ class CheckLoginToken extends StatelessWidget {
             return HomeView();
           } else {
             // Người dùng chưa đăng nhập, chuyển đến màn hình đăng nhập
-            return HomeView();//Login();
+            return Login();
           }
         },
       ),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
+import '../../Model/CompanyNoticeRecord/CompanyNoticeModel.dart';
 import '../../Services/BaseServices/SharedPreferencesService.dart';
-import '../Calendar/CalendarView.dart';
+import '../../Services/NetWork/NetWorkRequest.dart';
+import '../../ViewModel/CompanyNotice/CompanyNoticeViewModel.dart';
 import '../Task/TaskDetailView.dart';
 import 'package:intl/intl.dart';
 
@@ -12,20 +12,35 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreen extends State<HomeScreen> {
-  Future<void> _refreshData() async {
-    // Giả định rằng bạn sẽ làm thao tác làm mới dữ liệu ở đây.
-    await Future.delayed(Duration(seconds: 2));
-  }
 
+  List<Data>? listdata;
   String FullName = "Loading...";
 
+  Future<void> loaddataMissionUnFinish() async {
+    final responses = await NetWorkRequest.GetJWT(
+        "/eBOSS/api/CompanyNoticeRecord/CompanyNoticeRecord");
+    final CompanyNotice = CompanyNoticeModel.fromJson(responses);
+    listdata = CompanyNotice.data;
+  }
+
+  // Load data refresh
+  Future<void> _refreshData() async {
+    // Giả định rằng bạn sẽ làm thao tác làm mới dữ liệu ở đây.
+    await Future.delayed(Duration(seconds: 0));
+    setState(() {
+      loaddataMissionUnFinish();
+    });
+  }
+
+  // Load data refresh
   Future<bool> loadData() async {
     await Future.delayed(Duration(seconds: 1)); // Giả lập thời gian tải
-    //print(SharedPreferencesService.GetString("Token"));
-
-    // Thực hiện các tác vụ tải dữ liệu khác ở đây
-
     return true;
+  }
+  @override
+  void initState() {
+    super.initState();
+    loaddataMissionUnFinish();
   }
 
   @override
@@ -33,7 +48,6 @@ class _HomeScreen extends State<HomeScreen> {
     DateTime now = DateTime.now();
     String formattedDate = "${now.day}/${now.month}/${now.year}";
     String formattedDay = DateFormat('EEEE').format(now);
-
     return Center(
       child: Container(
         color: Color(0xffffff),
@@ -53,7 +67,7 @@ class _HomeScreen extends State<HomeScreen> {
                         children: [
                           Padding(
                               padding:
-                                  EdgeInsets.only(top: 10, left: 10, right: 10),
+                              EdgeInsets.only(top: 10, left: 10, right: 10),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
@@ -67,7 +81,7 @@ class _HomeScreen extends State<HomeScreen> {
                                   ),
                                   Text(
                                     SharedPreferencesService.getString(
-                                            KeyServices.KeyUserName)
+                                        KeyServices.KeyUserName)
                                         .toString(),
                                     style: TextStyle(
                                         fontSize: 15,
@@ -79,7 +93,7 @@ class _HomeScreen extends State<HomeScreen> {
                               )),
                           Padding(
                             padding:
-                                EdgeInsets.only(top: 0, left: 10, right: 10),
+                            EdgeInsets.only(top: 0, left: 10, right: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
@@ -110,11 +124,11 @@ class _HomeScreen extends State<HomeScreen> {
                                       height: 50,
                                       child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.start,
+                                        MainAxisAlignment.start,
                                         children: [
                                           Column(
                                             crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                             children: <Widget>[
                                               Padding(
                                                   padding: EdgeInsets.only(
@@ -128,7 +142,7 @@ class _HomeScreen extends State<HomeScreen> {
                                                   )),
                                               Padding(
                                                 padding:
-                                                    EdgeInsets.only(bottom: 0),
+                                                EdgeInsets.only(bottom: 0),
                                                 child: Text("Giờ vào",
                                                     style: TextStyle(
                                                         fontSize: 14,
@@ -155,11 +169,11 @@ class _HomeScreen extends State<HomeScreen> {
                                       height: 50,
                                       child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.start,
+                                        MainAxisAlignment.start,
                                         children: [
                                           Column(
                                             crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                             children: <Widget>[
                                               Padding(
                                                   padding: EdgeInsets.only(
@@ -173,7 +187,7 @@ class _HomeScreen extends State<HomeScreen> {
                                                   )),
                                               Padding(
                                                 padding:
-                                                    EdgeInsets.only(bottom: 0),
+                                                EdgeInsets.only(bottom: 0),
                                                 child: Text("Giờ về",
                                                     style: TextStyle(
                                                         fontSize: 14,
@@ -208,11 +222,11 @@ class _HomeScreen extends State<HomeScreen> {
                                       height: 50,
                                       child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.start,
+                                        MainAxisAlignment.start,
                                         children: [
                                           Column(
                                             crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                             children: <Widget>[
                                               Padding(
                                                   padding: EdgeInsets.only(
@@ -226,7 +240,7 @@ class _HomeScreen extends State<HomeScreen> {
                                                   )),
                                               Padding(
                                                 padding:
-                                                    EdgeInsets.only(bottom: 0),
+                                                EdgeInsets.only(bottom: 0),
                                                 child: Text("Số ngày công",
                                                     style: TextStyle(
                                                         fontSize: 14,
@@ -253,11 +267,11 @@ class _HomeScreen extends State<HomeScreen> {
                                       height: 50,
                                       child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.start,
+                                        MainAxisAlignment.start,
                                         children: [
                                           Column(
                                             crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                             children: <Widget>[
                                               Padding(
                                                   padding: EdgeInsets.only(
@@ -271,7 +285,7 @@ class _HomeScreen extends State<HomeScreen> {
                                                   )),
                                               Padding(
                                                 padding:
-                                                    EdgeInsets.only(bottom: 0),
+                                                EdgeInsets.only(bottom: 0),
                                                 child: Text("Số ngày nghĩ phép",
                                                     style: TextStyle(
                                                         fontSize: 14,
@@ -306,11 +320,11 @@ class _HomeScreen extends State<HomeScreen> {
                                       height: 50,
                                       child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.start,
+                                        MainAxisAlignment.start,
                                         children: [
                                           Column(
                                             crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                             children: <Widget>[
                                               Padding(
                                                   padding: EdgeInsets.only(
@@ -324,7 +338,7 @@ class _HomeScreen extends State<HomeScreen> {
                                                   )),
                                               Padding(
                                                 padding:
-                                                    EdgeInsets.only(bottom: 0),
+                                                EdgeInsets.only(bottom: 0),
                                                 child: Text("Quên chấm công",
                                                     style: TextStyle(
                                                         fontSize: 14,
@@ -351,11 +365,11 @@ class _HomeScreen extends State<HomeScreen> {
                                       height: 50,
                                       child: Row(
                                         mainAxisAlignment:
-                                            MainAxisAlignment.start,
+                                        MainAxisAlignment.start,
                                         children: [
                                           Column(
                                             crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                            CrossAxisAlignment.start,
                                             children: <Widget>[
                                               Padding(
                                                   padding: EdgeInsets.only(
@@ -369,7 +383,7 @@ class _HomeScreen extends State<HomeScreen> {
                                                   )),
                                               Padding(
                                                 padding:
-                                                    EdgeInsets.only(bottom: 0),
+                                                EdgeInsets.only(bottom: 0),
                                                 child: Text("Số phép năm",
                                                     style: TextStyle(
                                                         fontSize: 14,
@@ -389,7 +403,7 @@ class _HomeScreen extends State<HomeScreen> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsets.only(top: 20, left: 10, right: 10),
+                            EdgeInsets.only(top: 40, left: 10, right: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -414,14 +428,16 @@ class _HomeScreen extends State<HomeScreen> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsets.only(top: 0, left: 10, right: 10),
+                            EdgeInsets.only(top: 0, left: 10, right: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text(
                                   "Nhiệm vụ chưa hoàn thành: ",
                                   style: TextStyle(
-                                      fontSize: 13, fontFamily: "Roboto", color: Colors.grey),
+                                      fontSize: 13,
+                                      fontFamily: "Roboto",
+                                      color: Colors.grey),
                                 )
                               ],
                             ),
@@ -430,24 +446,24 @@ class _HomeScreen extends State<HomeScreen> {
                             width: double.infinity,
                             child: Padding(
                               padding:
-                                  EdgeInsets.only(top: 10, left: 10, right: 10),
+                              EdgeInsets.only(top: 10, left: 10, right: 10),
                               child: SingleChildScrollView(
                                   scrollDirection: Axis
                                       .horizontal, // Đặt hướng cuộn là ngang
                                   child: ConstrainedBox(
                                     constraints: BoxConstraints(
                                         maxHeight:
-                                            200, // Đặt kích thước tối đa theo ý muốn
+                                        200, // Đặt kích thước tối đa theo ý muốn
                                         maxWidth: double
                                             .infinity // Để ngăn chặn nó bị co lại
-                                        ),
+                                    ),
                                     child: Row(
                                       children: <Widget>[
                                         Card(
                                           color: Colors.white,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                BorderRadius.circular(10.0),
+                                            BorderRadius.circular(10.0),
                                           ),
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
@@ -469,8 +485,12 @@ class _HomeScreen extends State<HomeScreen> {
                                                                 bottom: 10),
                                                             child: SizedBox(
                                                               width: 180.0,
-                                                              child: Text("[Giao diện] xử lý moclup giao diện trên mobile",
-                                                                  overflow: TextOverflow.ellipsis,style: TextStyle(
+                                                              child: Text(
+                                                                  "[Giao diện] xử lý moclup giao diện trên mobile",
+                                                                  overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                                  style: TextStyle(
                                                                       fontSize:
                                                                       13,
                                                                       fontFamily:
@@ -514,17 +534,24 @@ class _HomeScreen extends State<HomeScreen> {
                                                           child: Container(
                                                             width: 150,
                                                             child: Row(
-                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                              mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
                                                               children: <Widget>[
                                                                 Icon(
-                                                                  Icons.access_time_filled_sharp,
-                                                                  color: Colors.blue,
+                                                                  Icons
+                                                                      .access_time_filled_sharp,
+                                                                  color: Colors
+                                                                      .blue,
                                                                   size: 20,
                                                                 ),
-                                                                Text("Quá hạn 15 ngày",style: TextStyle(
-                                                                    fontSize: 13,
-                                                                    fontFamily: "Roboto"
-                                                                )),
+                                                                Text(
+                                                                    "Quá hạn 15 ngày",
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                        13,
+                                                                        fontFamily:
+                                                                        "Roboto")),
                                                               ],
                                                             ),
                                                           ),
@@ -532,8 +559,7 @@ class _HomeScreen extends State<HomeScreen> {
                                                       ],
                                                     ),
                                                   ],
-                                                )
-                                            ),
+                                                )),
                                           ),
                                           elevation: 4.0,
                                         ),
@@ -563,8 +589,12 @@ class _HomeScreen extends State<HomeScreen> {
                                                                 bottom: 10),
                                                             child: SizedBox(
                                                               width: 180.0,
-                                                              child: Text("[Giao diện] xử lý moclup giao diện trên mobile",
-                                                                  overflow: TextOverflow.ellipsis,style: TextStyle(
+                                                              child: Text(
+                                                                  "[Giao diện] xử lý moclup giao diện trên mobile",
+                                                                  overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                                  style: TextStyle(
                                                                       fontSize:
                                                                       13,
                                                                       fontFamily:
@@ -608,17 +638,24 @@ class _HomeScreen extends State<HomeScreen> {
                                                           child: Container(
                                                             width: 150,
                                                             child: Row(
-                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                              mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
                                                               children: <Widget>[
                                                                 Icon(
-                                                                  Icons.access_time_filled_sharp,
-                                                                  color: Colors.blue,
+                                                                  Icons
+                                                                      .access_time_filled_sharp,
+                                                                  color: Colors
+                                                                      .blue,
                                                                   size: 20,
                                                                 ),
-                                                                Text("Quá hạn 15 ngày",style: TextStyle(
-                                                                    fontSize: 13,
-                                                                    fontFamily: "Roboto"
-                                                                )),
+                                                                Text(
+                                                                    "Quá hạn 15 ngày",
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                        13,
+                                                                        fontFamily:
+                                                                        "Roboto")),
                                                               ],
                                                             ),
                                                           ),
@@ -626,8 +663,7 @@ class _HomeScreen extends State<HomeScreen> {
                                                       ],
                                                     ),
                                                   ],
-                                                )
-                                            ),
+                                                )),
                                           ),
                                           elevation: 4.0,
                                         ),
@@ -657,8 +693,12 @@ class _HomeScreen extends State<HomeScreen> {
                                                                 bottom: 10),
                                                             child: SizedBox(
                                                               width: 180.0,
-                                                              child: Text("[Giao diện] xử lý moclup giao diện trên mobile",
-                                                                  overflow: TextOverflow.ellipsis,style: TextStyle(
+                                                              child: Text(
+                                                                  "[Giao diện] xử lý moclup giao diện trên mobile",
+                                                                  overflow:
+                                                                  TextOverflow
+                                                                      .ellipsis,
+                                                                  style: TextStyle(
                                                                       fontSize:
                                                                       13,
                                                                       fontFamily:
@@ -702,17 +742,24 @@ class _HomeScreen extends State<HomeScreen> {
                                                           child: Container(
                                                             width: 150,
                                                             child: Row(
-                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                              mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .spaceBetween,
                                                               children: <Widget>[
                                                                 Icon(
-                                                                  Icons.access_time_filled_sharp,
-                                                                  color: Colors.blue,
+                                                                  Icons
+                                                                      .access_time_filled_sharp,
+                                                                  color: Colors
+                                                                      .blue,
                                                                   size: 20,
                                                                 ),
-                                                                Text("Quá hạn 15 ngày",style: TextStyle(
-                                                                    fontSize: 13,
-                                                                    fontFamily: "Roboto"
-                                                                )),
+                                                                Text(
+                                                                    "Quá hạn 15 ngày",
+                                                                    style: TextStyle(
+                                                                        fontSize:
+                                                                        13,
+                                                                        fontFamily:
+                                                                        "Roboto")),
                                                               ],
                                                             ),
                                                           ),
@@ -720,8 +767,7 @@ class _HomeScreen extends State<HomeScreen> {
                                                       ],
                                                     ),
                                                   ],
-                                                )
-                                            ),
+                                                )),
                                           ),
                                           elevation: 4.0,
                                         ),
@@ -732,7 +778,7 @@ class _HomeScreen extends State<HomeScreen> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsets.only(top: 10, left: 10, right: 10),
+                            EdgeInsets.only(top: 40, left: 10, right: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -757,10 +803,10 @@ class _HomeScreen extends State<HomeScreen> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsets.only(top: 10, left: 10, right: 10),
+                            EdgeInsets.only(top: 10, left: 10, right: 10),
                             child: SingleChildScrollView(
-                                scrollDirection: Axis
-                                    .horizontal, // Đặt hướng cuộn là ngang
+                                scrollDirection:
+                                Axis.horizontal, // Đặt hướng cuộn là ngang
                                 child: ConstrainedBox(
                                   constraints: BoxConstraints(
                                       maxHeight:
@@ -796,8 +842,12 @@ class _HomeScreen extends State<HomeScreen> {
                                                               bottom: 10),
                                                           child: SizedBox(
                                                             width: 180.0,
-                                                            child: Text("[Giao diện] xử lý moclup giao diện trên mobile",
-                                                                overflow: TextOverflow.ellipsis,style: TextStyle(
+                                                            child: Text(
+                                                                "[Giao diện] xử lý moclup giao diện trên mobile",
+                                                                overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                                style: TextStyle(
                                                                     fontSize:
                                                                     13,
                                                                     fontFamily:
@@ -822,8 +872,7 @@ class _HomeScreen extends State<HomeScreen> {
                                                     ],
                                                   ),
                                                 ],
-                                              )
-                                          ),
+                                              )),
                                         ),
                                         elevation: 4.0,
                                       ),
@@ -853,8 +902,12 @@ class _HomeScreen extends State<HomeScreen> {
                                                               bottom: 10),
                                                           child: SizedBox(
                                                             width: 180.0,
-                                                            child: Text("[Giao diện] xử lý moclup giao diện trên mobile",
-                                                                overflow: TextOverflow.ellipsis,style: TextStyle(
+                                                            child: Text(
+                                                                "[Giao diện] xử lý moclup giao diện trên mobile",
+                                                                overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                                style: TextStyle(
                                                                     fontSize:
                                                                     13,
                                                                     fontFamily:
@@ -879,8 +932,7 @@ class _HomeScreen extends State<HomeScreen> {
                                                     ],
                                                   ),
                                                 ],
-                                              )
-                                          ),
+                                              )),
                                         ),
                                         elevation: 4.0,
                                       ),
@@ -910,8 +962,12 @@ class _HomeScreen extends State<HomeScreen> {
                                                               bottom: 10),
                                                           child: SizedBox(
                                                             width: 180.0,
-                                                            child: Text("[Giao diện] xử lý moclup giao diện trên mobile",
-                                                                overflow: TextOverflow.ellipsis,style: TextStyle(
+                                                            child: Text(
+                                                                "[Giao diện] xử lý moclup giao diện trên mobile",
+                                                                overflow:
+                                                                TextOverflow
+                                                                    .ellipsis,
+                                                                style: TextStyle(
                                                                     fontSize:
                                                                     13,
                                                                     fontFamily:
@@ -936,8 +992,7 @@ class _HomeScreen extends State<HomeScreen> {
                                                     ],
                                                   ),
                                                 ],
-                                              )
-                                          ),
+                                              )),
                                         ),
                                         elevation: 4.0,
                                       ),
@@ -947,7 +1002,7 @@ class _HomeScreen extends State<HomeScreen> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsets.only(top: 10, left: 10, right: 10),
+                            EdgeInsets.only(top: 40, left: 10, right: 10, bottom: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -970,6 +1025,16 @@ class _HomeScreen extends State<HomeScreen> {
                               ],
                             ),
                           ),
+                          Column( //CompanyNoticeViewModel
+                            children: [
+                              if (listdata == null)
+                                Text("Đang Load")
+                              else
+                                Column(
+                                  children: listdata!.map((e) => CompanyNoticeViewModel(data: e)).toList(),
+                                )
+                            ],
+                          )
                         ],
                       );
                     },
@@ -982,7 +1047,6 @@ class _HomeScreen extends State<HomeScreen> {
     );
   }
 }
-
 class Screen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

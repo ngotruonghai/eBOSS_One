@@ -34,7 +34,17 @@ class NetWorkRequest {
     );
     return _handleResponse(response);
   }
-
+static Future<Map<String, dynamic>> GetJWT(String endpoint) async{
+  String url = HostService.Host_Mobile + endpoint;
+  final response = await http.get(
+    Uri.parse(url),
+    headers: {
+      'eBOSSONE': SharedPreferencesService.getString(KeyServices.KeyToken),
+      'Content-Type': 'application/json',
+    },
+  );
+  return _handleResponse(response);
+}
   static Map<String, dynamic> _handleResponse(http.Response response) {
     if (response.statusCode >= 200 && response.statusCode < 300) {
       // Trả về dữ liệu đã được giải mã từ JSON

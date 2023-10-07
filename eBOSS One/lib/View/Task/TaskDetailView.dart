@@ -32,9 +32,6 @@ class _TaskDetailState extends State<TaskDetail> {
       _loadInfoMissionUnFinish();
     });
   }
-
-
-
   @override
   void initState() {
     super.initState();
