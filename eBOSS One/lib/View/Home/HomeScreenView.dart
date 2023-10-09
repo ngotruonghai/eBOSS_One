@@ -3,6 +3,7 @@ import '../../Model/CompanyNoticeRecord/CompanyNoticeModel.dart';
 import '../../Services/BaseServices/SharedPreferencesService.dart';
 import '../../Services/NetWork/NetWorkRequest.dart';
 import '../../ViewModel/CompanyNotice/CompanyNoticeViewModel.dart';
+import '../CompanyNotice/CompanyNoticeView.dart';
 import '../Task/TaskDetailView.dart';
 import 'package:intl/intl.dart';
 
@@ -12,15 +13,19 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreen extends State<HomeScreen> {
-
-  List<Data>? listdata;
+  List<Data>? listdata = null;
   String FullName = "Loading...";
 
-  Future<void> loaddataMissionUnFinish() async {
-    final responses = await NetWorkRequest.GetJWT(
-        "/eBOSS/api/CompanyNoticeRecord/CompanyNoticeRecord");
-    final CompanyNotice = CompanyNoticeModel.fromJson(responses);
-    listdata = CompanyNotice.data;
+  Future<String> loaddataMissionUnFinish() async {
+    try {
+      final responses = await NetWorkRequest.GetJWT(
+          "/eBOSS/api/CompanyNoticeRecord/ListCompanyNotice_Home");
+      final CompanyNotice = CompanyNoticeModel.fromJson(responses);
+      listdata = CompanyNotice.data;
+      return "";
+    } catch (e) {
+      return e.toString();
+    }
   }
 
   // Load data refresh
@@ -34,9 +39,12 @@ class _HomeScreen extends State<HomeScreen> {
 
   // Load data refresh
   Future<bool> loadData() async {
-    await Future.delayed(Duration(seconds: 1)); // Giả lập thời gian tải
+    listdata = null;
+    //await Future.delayed(Duration(seconds: 1)); // Giả lập thời gian tải
+    await loaddataMissionUnFinish();
     return true;
   }
+
   @override
   void initState() {
     super.initState();
@@ -58,7 +66,11 @@ class _HomeScreen extends State<HomeScreen> {
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   // Hiển thị trang tải
-                  return CircularProgressIndicator();
+                  return CircularProgressIndicator(
+                    color: Colors.deepOrange,
+                  );
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error: ${snapshot.error}'));
                 } else {
                   return ListView.builder(
                     itemCount: 1,
@@ -67,7 +79,7 @@ class _HomeScreen extends State<HomeScreen> {
                         children: [
                           Padding(
                               padding:
-                              EdgeInsets.only(top: 10, left: 10, right: 10),
+                                  EdgeInsets.only(top: 10, left: 10, right: 10),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
@@ -81,7 +93,7 @@ class _HomeScreen extends State<HomeScreen> {
                                   ),
                                   Text(
                                     SharedPreferencesService.getString(
-                                        KeyServices.KeyUserName)
+                                            KeyServices.KeyUserName)
                                         .toString(),
                                     style: TextStyle(
                                         fontSize: 15,
@@ -93,7 +105,7 @@ class _HomeScreen extends State<HomeScreen> {
                               )),
                           Padding(
                             padding:
-                            EdgeInsets.only(top: 0, left: 10, right: 10),
+                                EdgeInsets.only(top: 0, left: 10, right: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
@@ -124,11 +136,11 @@ class _HomeScreen extends State<HomeScreen> {
                                       height: 50,
                                       child: Row(
                                         mainAxisAlignment:
-                                        MainAxisAlignment.start,
+                                            MainAxisAlignment.start,
                                         children: [
                                           Column(
                                             crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                                CrossAxisAlignment.start,
                                             children: <Widget>[
                                               Padding(
                                                   padding: EdgeInsets.only(
@@ -142,7 +154,7 @@ class _HomeScreen extends State<HomeScreen> {
                                                   )),
                                               Padding(
                                                 padding:
-                                                EdgeInsets.only(bottom: 0),
+                                                    EdgeInsets.only(bottom: 0),
                                                 child: Text("Giờ vào",
                                                     style: TextStyle(
                                                         fontSize: 14,
@@ -169,11 +181,11 @@ class _HomeScreen extends State<HomeScreen> {
                                       height: 50,
                                       child: Row(
                                         mainAxisAlignment:
-                                        MainAxisAlignment.start,
+                                            MainAxisAlignment.start,
                                         children: [
                                           Column(
                                             crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                                CrossAxisAlignment.start,
                                             children: <Widget>[
                                               Padding(
                                                   padding: EdgeInsets.only(
@@ -187,7 +199,7 @@ class _HomeScreen extends State<HomeScreen> {
                                                   )),
                                               Padding(
                                                 padding:
-                                                EdgeInsets.only(bottom: 0),
+                                                    EdgeInsets.only(bottom: 0),
                                                 child: Text("Giờ về",
                                                     style: TextStyle(
                                                         fontSize: 14,
@@ -222,11 +234,11 @@ class _HomeScreen extends State<HomeScreen> {
                                       height: 50,
                                       child: Row(
                                         mainAxisAlignment:
-                                        MainAxisAlignment.start,
+                                            MainAxisAlignment.start,
                                         children: [
                                           Column(
                                             crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                                CrossAxisAlignment.start,
                                             children: <Widget>[
                                               Padding(
                                                   padding: EdgeInsets.only(
@@ -240,7 +252,7 @@ class _HomeScreen extends State<HomeScreen> {
                                                   )),
                                               Padding(
                                                 padding:
-                                                EdgeInsets.only(bottom: 0),
+                                                    EdgeInsets.only(bottom: 0),
                                                 child: Text("Số ngày công",
                                                     style: TextStyle(
                                                         fontSize: 14,
@@ -267,11 +279,11 @@ class _HomeScreen extends State<HomeScreen> {
                                       height: 50,
                                       child: Row(
                                         mainAxisAlignment:
-                                        MainAxisAlignment.start,
+                                            MainAxisAlignment.start,
                                         children: [
                                           Column(
                                             crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                                CrossAxisAlignment.start,
                                             children: <Widget>[
                                               Padding(
                                                   padding: EdgeInsets.only(
@@ -285,7 +297,7 @@ class _HomeScreen extends State<HomeScreen> {
                                                   )),
                                               Padding(
                                                 padding:
-                                                EdgeInsets.only(bottom: 0),
+                                                    EdgeInsets.only(bottom: 0),
                                                 child: Text("Số ngày nghĩ phép",
                                                     style: TextStyle(
                                                         fontSize: 14,
@@ -320,11 +332,11 @@ class _HomeScreen extends State<HomeScreen> {
                                       height: 50,
                                       child: Row(
                                         mainAxisAlignment:
-                                        MainAxisAlignment.start,
+                                            MainAxisAlignment.start,
                                         children: [
                                           Column(
                                             crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                                CrossAxisAlignment.start,
                                             children: <Widget>[
                                               Padding(
                                                   padding: EdgeInsets.only(
@@ -338,7 +350,7 @@ class _HomeScreen extends State<HomeScreen> {
                                                   )),
                                               Padding(
                                                 padding:
-                                                EdgeInsets.only(bottom: 0),
+                                                    EdgeInsets.only(bottom: 0),
                                                 child: Text("Quên chấm công",
                                                     style: TextStyle(
                                                         fontSize: 14,
@@ -365,11 +377,11 @@ class _HomeScreen extends State<HomeScreen> {
                                       height: 50,
                                       child: Row(
                                         mainAxisAlignment:
-                                        MainAxisAlignment.start,
+                                            MainAxisAlignment.start,
                                         children: [
                                           Column(
                                             crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                                CrossAxisAlignment.start,
                                             children: <Widget>[
                                               Padding(
                                                   padding: EdgeInsets.only(
@@ -383,7 +395,7 @@ class _HomeScreen extends State<HomeScreen> {
                                                   )),
                                               Padding(
                                                 padding:
-                                                EdgeInsets.only(bottom: 0),
+                                                    EdgeInsets.only(bottom: 0),
                                                 child: Text("Số phép năm",
                                                     style: TextStyle(
                                                         fontSize: 14,
@@ -403,7 +415,7 @@ class _HomeScreen extends State<HomeScreen> {
                           ),
                           Padding(
                             padding:
-                            EdgeInsets.only(top: 40, left: 10, right: 10),
+                                EdgeInsets.only(top: 40, left: 10, right: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -428,7 +440,7 @@ class _HomeScreen extends State<HomeScreen> {
                           ),
                           Padding(
                             padding:
-                            EdgeInsets.only(top: 0, left: 10, right: 10),
+                                EdgeInsets.only(top: 0, left: 10, right: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
@@ -446,24 +458,24 @@ class _HomeScreen extends State<HomeScreen> {
                             width: double.infinity,
                             child: Padding(
                               padding:
-                              EdgeInsets.only(top: 10, left: 10, right: 10),
+                                  EdgeInsets.only(top: 10, left: 10, right: 10),
                               child: SingleChildScrollView(
                                   scrollDirection: Axis
                                       .horizontal, // Đặt hướng cuộn là ngang
                                   child: ConstrainedBox(
                                     constraints: BoxConstraints(
                                         maxHeight:
-                                        200, // Đặt kích thước tối đa theo ý muốn
+                                            200, // Đặt kích thước tối đa theo ý muốn
                                         maxWidth: double
                                             .infinity // Để ngăn chặn nó bị co lại
-                                    ),
+                                        ),
                                     child: Row(
                                       children: <Widget>[
                                         Card(
                                           color: Colors.white,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
-                                            BorderRadius.circular(10.0),
+                                                BorderRadius.circular(10.0),
                                           ),
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
@@ -472,55 +484,55 @@ class _HomeScreen extends State<HomeScreen> {
                                                 height: 80,
                                                 child: Row(
                                                   mainAxisAlignment:
-                                                  MainAxisAlignment.start,
+                                                      MainAxisAlignment.start,
                                                   children: [
                                                     Column(
                                                       crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .start,
+                                                          CrossAxisAlignment
+                                                              .start,
                                                       children: <Widget>[
                                                         Padding(
                                                             padding:
-                                                            EdgeInsets.only(
-                                                                bottom: 10),
+                                                                EdgeInsets.only(
+                                                                    bottom: 10),
                                                             child: SizedBox(
                                                               width: 180.0,
                                                               child: Text(
                                                                   "[Giao diện] xử lý moclup giao diện trên mobile",
                                                                   overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
+                                                                      TextOverflow
+                                                                          .ellipsis,
                                                                   style: TextStyle(
                                                                       fontSize:
-                                                                      13,
+                                                                          13,
                                                                       fontFamily:
-                                                                      "Roboto",
+                                                                          "Roboto",
                                                                       color: Colors
                                                                           .black,
                                                                       fontWeight:
-                                                                      FontWeight
-                                                                          .bold)),
+                                                                          FontWeight
+                                                                              .bold)),
                                                             )),
                                                         Padding(
                                                             padding:
-                                                            EdgeInsets.only(
-                                                                top: 0),
+                                                                EdgeInsets.only(
+                                                                    top: 0),
                                                             child: Text(
                                                               "Dự an",
                                                               style: TextStyle(
                                                                   fontFamily:
-                                                                  "Roboto",
+                                                                      "Roboto",
                                                                   fontSize: 13),
                                                             )),
                                                         Padding(
                                                             padding:
-                                                            EdgeInsets.only(
-                                                                top: 5),
+                                                                EdgeInsets.only(
+                                                                    top: 5),
                                                             child: Container(
                                                               width: 180,
                                                               child: Divider(
                                                                 color:
-                                                                Colors.grey,
+                                                                    Colors.grey,
                                                                 thickness: 1.0,
                                                                 indent: 0,
                                                                 endIndent: 0,
@@ -529,14 +541,14 @@ class _HomeScreen extends State<HomeScreen> {
                                                             )),
                                                         Padding(
                                                           padding:
-                                                          EdgeInsets.only(
-                                                              top: 5),
+                                                              EdgeInsets.only(
+                                                                  top: 5),
                                                           child: Container(
                                                             width: 150,
                                                             child: Row(
                                                               mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
                                                               children: <Widget>[
                                                                 Icon(
                                                                   Icons
@@ -549,9 +561,9 @@ class _HomeScreen extends State<HomeScreen> {
                                                                     "Quá hạn 15 ngày",
                                                                     style: TextStyle(
                                                                         fontSize:
-                                                                        13,
+                                                                            13,
                                                                         fontFamily:
-                                                                        "Roboto")),
+                                                                            "Roboto")),
                                                               ],
                                                             ),
                                                           ),
@@ -567,7 +579,7 @@ class _HomeScreen extends State<HomeScreen> {
                                           color: Colors.white,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
-                                            BorderRadius.circular(10.0),
+                                                BorderRadius.circular(10.0),
                                           ),
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
@@ -576,55 +588,55 @@ class _HomeScreen extends State<HomeScreen> {
                                                 height: 80,
                                                 child: Row(
                                                   mainAxisAlignment:
-                                                  MainAxisAlignment.start,
+                                                      MainAxisAlignment.start,
                                                   children: [
                                                     Column(
                                                       crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .start,
+                                                          CrossAxisAlignment
+                                                              .start,
                                                       children: <Widget>[
                                                         Padding(
                                                             padding:
-                                                            EdgeInsets.only(
-                                                                bottom: 10),
+                                                                EdgeInsets.only(
+                                                                    bottom: 10),
                                                             child: SizedBox(
                                                               width: 180.0,
                                                               child: Text(
                                                                   "[Giao diện] xử lý moclup giao diện trên mobile",
                                                                   overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
+                                                                      TextOverflow
+                                                                          .ellipsis,
                                                                   style: TextStyle(
                                                                       fontSize:
-                                                                      13,
+                                                                          13,
                                                                       fontFamily:
-                                                                      "Roboto",
+                                                                          "Roboto",
                                                                       color: Colors
                                                                           .black,
                                                                       fontWeight:
-                                                                      FontWeight
-                                                                          .bold)),
+                                                                          FontWeight
+                                                                              .bold)),
                                                             )),
                                                         Padding(
                                                             padding:
-                                                            EdgeInsets.only(
-                                                                top: 0),
+                                                                EdgeInsets.only(
+                                                                    top: 0),
                                                             child: Text(
                                                               "Dự an",
                                                               style: TextStyle(
                                                                   fontFamily:
-                                                                  "Roboto",
+                                                                      "Roboto",
                                                                   fontSize: 13),
                                                             )),
                                                         Padding(
                                                             padding:
-                                                            EdgeInsets.only(
-                                                                top: 5),
+                                                                EdgeInsets.only(
+                                                                    top: 5),
                                                             child: Container(
                                                               width: 180,
                                                               child: Divider(
                                                                 color:
-                                                                Colors.grey,
+                                                                    Colors.grey,
                                                                 thickness: 1.0,
                                                                 indent: 0,
                                                                 endIndent: 0,
@@ -633,14 +645,14 @@ class _HomeScreen extends State<HomeScreen> {
                                                             )),
                                                         Padding(
                                                           padding:
-                                                          EdgeInsets.only(
-                                                              top: 5),
+                                                              EdgeInsets.only(
+                                                                  top: 5),
                                                           child: Container(
                                                             width: 150,
                                                             child: Row(
                                                               mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
                                                               children: <Widget>[
                                                                 Icon(
                                                                   Icons
@@ -653,9 +665,9 @@ class _HomeScreen extends State<HomeScreen> {
                                                                     "Quá hạn 15 ngày",
                                                                     style: TextStyle(
                                                                         fontSize:
-                                                                        13,
+                                                                            13,
                                                                         fontFamily:
-                                                                        "Roboto")),
+                                                                            "Roboto")),
                                                               ],
                                                             ),
                                                           ),
@@ -671,7 +683,7 @@ class _HomeScreen extends State<HomeScreen> {
                                           color: Colors.white,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
-                                            BorderRadius.circular(10.0),
+                                                BorderRadius.circular(10.0),
                                           ),
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
@@ -680,55 +692,55 @@ class _HomeScreen extends State<HomeScreen> {
                                                 height: 80,
                                                 child: Row(
                                                   mainAxisAlignment:
-                                                  MainAxisAlignment.start,
+                                                      MainAxisAlignment.start,
                                                   children: [
                                                     Column(
                                                       crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .start,
+                                                          CrossAxisAlignment
+                                                              .start,
                                                       children: <Widget>[
                                                         Padding(
                                                             padding:
-                                                            EdgeInsets.only(
-                                                                bottom: 10),
+                                                                EdgeInsets.only(
+                                                                    bottom: 10),
                                                             child: SizedBox(
                                                               width: 180.0,
                                                               child: Text(
                                                                   "[Giao diện] xử lý moclup giao diện trên mobile",
                                                                   overflow:
-                                                                  TextOverflow
-                                                                      .ellipsis,
+                                                                      TextOverflow
+                                                                          .ellipsis,
                                                                   style: TextStyle(
                                                                       fontSize:
-                                                                      13,
+                                                                          13,
                                                                       fontFamily:
-                                                                      "Roboto",
+                                                                          "Roboto",
                                                                       color: Colors
                                                                           .black,
                                                                       fontWeight:
-                                                                      FontWeight
-                                                                          .bold)),
+                                                                          FontWeight
+                                                                              .bold)),
                                                             )),
                                                         Padding(
                                                             padding:
-                                                            EdgeInsets.only(
-                                                                top: 0),
+                                                                EdgeInsets.only(
+                                                                    top: 0),
                                                             child: Text(
                                                               "Dự an",
                                                               style: TextStyle(
                                                                   fontFamily:
-                                                                  "Roboto",
+                                                                      "Roboto",
                                                                   fontSize: 13),
                                                             )),
                                                         Padding(
                                                             padding:
-                                                            EdgeInsets.only(
-                                                                top: 5),
+                                                                EdgeInsets.only(
+                                                                    top: 5),
                                                             child: Container(
                                                               width: 180,
                                                               child: Divider(
                                                                 color:
-                                                                Colors.grey,
+                                                                    Colors.grey,
                                                                 thickness: 1.0,
                                                                 indent: 0,
                                                                 endIndent: 0,
@@ -737,14 +749,14 @@ class _HomeScreen extends State<HomeScreen> {
                                                             )),
                                                         Padding(
                                                           padding:
-                                                          EdgeInsets.only(
-                                                              top: 5),
+                                                              EdgeInsets.only(
+                                                                  top: 5),
                                                           child: Container(
                                                             width: 150,
                                                             child: Row(
                                                               mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
+                                                                  MainAxisAlignment
+                                                                      .spaceBetween,
                                                               children: <Widget>[
                                                                 Icon(
                                                                   Icons
@@ -757,9 +769,9 @@ class _HomeScreen extends State<HomeScreen> {
                                                                     "Quá hạn 15 ngày",
                                                                     style: TextStyle(
                                                                         fontSize:
-                                                                        13,
+                                                                            13,
                                                                         fontFamily:
-                                                                        "Roboto")),
+                                                                            "Roboto")),
                                                               ],
                                                             ),
                                                           ),
@@ -778,7 +790,7 @@ class _HomeScreen extends State<HomeScreen> {
                           ),
                           Padding(
                             padding:
-                            EdgeInsets.only(top: 40, left: 10, right: 10),
+                                EdgeInsets.only(top: 40, left: 10, right: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -803,24 +815,24 @@ class _HomeScreen extends State<HomeScreen> {
                           ),
                           Padding(
                             padding:
-                            EdgeInsets.only(top: 10, left: 10, right: 10),
+                                EdgeInsets.only(top: 10, left: 10, right: 10),
                             child: SingleChildScrollView(
                                 scrollDirection:
-                                Axis.horizontal, // Đặt hướng cuộn là ngang
+                                    Axis.horizontal, // Đặt hướng cuộn là ngang
                                 child: ConstrainedBox(
                                   constraints: BoxConstraints(
                                       maxHeight:
-                                      200, // Đặt kích thước tối đa theo ý muốn
+                                          200, // Đặt kích thước tối đa theo ý muốn
                                       maxWidth: double
                                           .infinity // Để ngăn chặn nó bị co lại
-                                  ),
+                                      ),
                                   child: Row(
                                     children: <Widget>[
                                       Card(
                                         color: Colors.white,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
-                                          BorderRadius.circular(10.0),
+                                              BorderRadius.circular(10.0),
                                         ),
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
@@ -829,44 +841,44 @@ class _HomeScreen extends State<HomeScreen> {
                                               height: 50,
                                               child: Row(
                                                 mainAxisAlignment:
-                                                MainAxisAlignment.start,
+                                                    MainAxisAlignment.start,
                                                 children: [
                                                   Column(
                                                     crossAxisAlignment:
-                                                    CrossAxisAlignment
-                                                        .start,
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: <Widget>[
                                                       Padding(
                                                           padding:
-                                                          EdgeInsets.only(
-                                                              bottom: 10),
+                                                              EdgeInsets.only(
+                                                                  bottom: 10),
                                                           child: SizedBox(
                                                             width: 180.0,
                                                             child: Text(
                                                                 "[Giao diện] xử lý moclup giao diện trên mobile",
                                                                 overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
+                                                                    TextOverflow
+                                                                        .ellipsis,
                                                                 style: TextStyle(
                                                                     fontSize:
-                                                                    13,
+                                                                        13,
                                                                     fontFamily:
-                                                                    "Roboto",
+                                                                        "Roboto",
                                                                     color: Colors
                                                                         .black,
                                                                     fontWeight:
-                                                                    FontWeight
-                                                                        .bold)),
+                                                                        FontWeight
+                                                                            .bold)),
                                                           )),
                                                       Padding(
                                                           padding:
-                                                          EdgeInsets.only(
-                                                              top: 0),
+                                                              EdgeInsets.only(
+                                                                  top: 0),
                                                           child: Text(
                                                             "Dự an",
                                                             style: TextStyle(
                                                                 fontFamily:
-                                                                "Roboto",
+                                                                    "Roboto",
                                                                 fontSize: 13),
                                                           )),
                                                     ],
@@ -880,7 +892,7 @@ class _HomeScreen extends State<HomeScreen> {
                                         color: Colors.white,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
-                                          BorderRadius.circular(10.0),
+                                              BorderRadius.circular(10.0),
                                         ),
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
@@ -889,44 +901,44 @@ class _HomeScreen extends State<HomeScreen> {
                                               height: 50,
                                               child: Row(
                                                 mainAxisAlignment:
-                                                MainAxisAlignment.start,
+                                                    MainAxisAlignment.start,
                                                 children: [
                                                   Column(
                                                     crossAxisAlignment:
-                                                    CrossAxisAlignment
-                                                        .start,
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: <Widget>[
                                                       Padding(
                                                           padding:
-                                                          EdgeInsets.only(
-                                                              bottom: 10),
+                                                              EdgeInsets.only(
+                                                                  bottom: 10),
                                                           child: SizedBox(
                                                             width: 180.0,
                                                             child: Text(
                                                                 "[Giao diện] xử lý moclup giao diện trên mobile",
                                                                 overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
+                                                                    TextOverflow
+                                                                        .ellipsis,
                                                                 style: TextStyle(
                                                                     fontSize:
-                                                                    13,
+                                                                        13,
                                                                     fontFamily:
-                                                                    "Roboto",
+                                                                        "Roboto",
                                                                     color: Colors
                                                                         .black,
                                                                     fontWeight:
-                                                                    FontWeight
-                                                                        .bold)),
+                                                                        FontWeight
+                                                                            .bold)),
                                                           )),
                                                       Padding(
                                                           padding:
-                                                          EdgeInsets.only(
-                                                              top: 0),
+                                                              EdgeInsets.only(
+                                                                  top: 0),
                                                           child: Text(
                                                             "Dự an",
                                                             style: TextStyle(
                                                                 fontFamily:
-                                                                "Roboto",
+                                                                    "Roboto",
                                                                 fontSize: 13),
                                                           )),
                                                     ],
@@ -940,7 +952,7 @@ class _HomeScreen extends State<HomeScreen> {
                                         color: Colors.white,
                                         shape: RoundedRectangleBorder(
                                           borderRadius:
-                                          BorderRadius.circular(10.0),
+                                              BorderRadius.circular(10.0),
                                         ),
                                         child: Padding(
                                           padding: const EdgeInsets.all(8.0),
@@ -949,44 +961,44 @@ class _HomeScreen extends State<HomeScreen> {
                                               height: 50,
                                               child: Row(
                                                 mainAxisAlignment:
-                                                MainAxisAlignment.start,
+                                                    MainAxisAlignment.start,
                                                 children: [
                                                   Column(
                                                     crossAxisAlignment:
-                                                    CrossAxisAlignment
-                                                        .start,
+                                                        CrossAxisAlignment
+                                                            .start,
                                                     children: <Widget>[
                                                       Padding(
                                                           padding:
-                                                          EdgeInsets.only(
-                                                              bottom: 10),
+                                                              EdgeInsets.only(
+                                                                  bottom: 10),
                                                           child: SizedBox(
                                                             width: 180.0,
                                                             child: Text(
                                                                 "[Giao diện] xử lý moclup giao diện trên mobile",
                                                                 overflow:
-                                                                TextOverflow
-                                                                    .ellipsis,
+                                                                    TextOverflow
+                                                                        .ellipsis,
                                                                 style: TextStyle(
                                                                     fontSize:
-                                                                    13,
+                                                                        13,
                                                                     fontFamily:
-                                                                    "Roboto",
+                                                                        "Roboto",
                                                                     color: Colors
                                                                         .black,
                                                                     fontWeight:
-                                                                    FontWeight
-                                                                        .bold)),
+                                                                        FontWeight
+                                                                            .bold)),
                                                           )),
                                                       Padding(
                                                           padding:
-                                                          EdgeInsets.only(
-                                                              top: 0),
+                                                              EdgeInsets.only(
+                                                                  top: 0),
                                                           child: Text(
                                                             "Dự an",
                                                             style: TextStyle(
                                                                 fontFamily:
-                                                                "Roboto",
+                                                                    "Roboto",
                                                                 fontSize: 13),
                                                           )),
                                                     ],
@@ -1001,8 +1013,8 @@ class _HomeScreen extends State<HomeScreen> {
                                 )),
                           ),
                           Padding(
-                            padding:
-                            EdgeInsets.only(top: 40, left: 10, right: 10, bottom: 10),
+                            padding: EdgeInsets.only(
+                                top: 40, left: 10, right: 10, bottom: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -1018,20 +1030,25 @@ class _HomeScreen extends State<HomeScreen> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => TaskDetail()),
+                                          builder: (context) =>
+                                              CompanyNoticeView()),
                                     );
                                   },
                                 ),
                               ],
                             ),
                           ),
-                          Column( //CompanyNoticeViewModel
+                          Column(
+                            //CompanyNoticeViewModel
                             children: [
                               if (listdata == null)
                                 Text("Đang Load")
                               else
                                 Column(
-                                  children: listdata!.map((e) => CompanyNoticeViewModel(data: e)).toList(),
+                                  children: listdata!
+                                      .map((e) =>
+                                          CompanyNoticeViewModel(data: e))
+                                      .toList(),
                                 )
                             ],
                           )
@@ -1047,6 +1064,7 @@ class _HomeScreen extends State<HomeScreen> {
     );
   }
 }
+
 class Screen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

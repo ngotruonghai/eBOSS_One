@@ -27,20 +27,30 @@ class CompanyNoticeViewModel extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(
                     top: 10, left: 5, right: 5),
-                child: Text(
-                  data.notificationAbout.toString(),
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 13,
-                      fontFamily: "Roboto",
-                      fontWeight: FontWeight.bold),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 2,
+                child: Row(
+                  children: [
+                    Padding(padding: EdgeInsets.only(right: 10),
+                    child: Icon(
+                      Icons.notifications,
+                      color: Colors.green,
+                      size: 20,
+                    )),
+                    Text(
+                      data.notificationAbout.toString(),
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 13,
+                          fontFamily: "Roboto",
+                          fontWeight: FontWeight.bold),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                    )
+                  ],
                 ),
               ),
               Padding(
                 padding: EdgeInsets.only(
-                    top: 15, left: 5, right: 5),
+                    top: 15, left: 40, right: 5),
                 child: Row(
                   mainAxisAlignment:
                   MainAxisAlignment.spaceBetween,
