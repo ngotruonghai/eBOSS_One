@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import '../../Model/CompanyNoticeRecord/CompanyNoticeModel.dart';
+import '../../View/CompanyNotice/DetailCompanyNoticeViewModel.dart';
 
 class ListCompanyNoticeViewModel extends StatelessWidget {
    ListCompanyNoticeViewModel({
@@ -70,9 +70,18 @@ class ListCompanyNoticeViewModel extends StatelessWidget {
                               ],
                             )),
                         Padding(padding: EdgeInsets.only(right: 10),
-                          child: Icon(
-                            Icons.my_library_books,
-                            size: 20,color:  Color(0xFFe17055),
+                          child:InkWell(
+                            onTap: (){
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => DetailCompanyNoticeViewModel()),
+                              );
+                            },
+                            child:  Icon(
+                              Icons.my_library_books,
+                              size: 20,color:  Color(0xFFe17055),
+                            ),
                           ),)
                       ],
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

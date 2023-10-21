@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../Model/CompanyNoticeRecord/CompanyNoticeModel.dart';
 import '../../Services/NetWork/NetWorkRequest.dart';
 import '../../ViewModel/CompanyNotice/ListCompanyNoticeViewModel.dart';
