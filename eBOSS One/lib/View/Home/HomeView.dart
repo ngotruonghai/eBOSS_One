@@ -4,6 +4,8 @@ import '../../View/Home/HomeDrawerView.dart';
 import '../../View/Home/HomeScreenView.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../UserInfo/UserInfoView.dart';
+
 
 class HomeView extends StatefulWidget {
   const HomeView({
@@ -20,7 +22,7 @@ class _HomeViewState extends State<HomeView> {
     HomeScreen(),
     Screen2(),
     Screen3(),
-    Screen4(),
+    UserInfoView(),
   ];
   void onItemTapped(int index) {
     setState(() {
@@ -157,7 +159,7 @@ class Screen4 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text('Screen 4'),
+      child: Text('Screen 4 dsds'),
     );
   }
 }

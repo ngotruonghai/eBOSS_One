@@ -25,7 +25,7 @@ class _CompanyNoticeView extends State<CompanyNoticeView> {
   }
 
   Future<bool> loadData() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 0));
     await loaddataCompanyNotice();// Giả lập thời gian tải
     return true;
   }
