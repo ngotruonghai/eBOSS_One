@@ -142,15 +142,7 @@ class Screen3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: ElevatedButton(
-        onPressed: () async {
-          final SharedPreferences prefs = await SharedPreferences.getInstance();
-          await prefs.remove('Token');
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => Login()));
-        },
-        child: Text("Đăng xuất"),
-      ),
+      child: Text(""),
     );
   }
 }

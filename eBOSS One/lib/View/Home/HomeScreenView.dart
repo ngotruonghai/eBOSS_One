@@ -103,316 +103,230 @@ class _HomeScreen extends State<HomeScreen> {
                                   ),
                                 ],
                               )),
-                          Padding(
-                            padding:
-                                EdgeInsets.only(top: 0, left: 10, right: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                          // Chấm công
+
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Padding(padding: EdgeInsets.only(top: 5, left: 10, right: 10),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      width: 160,
+                                      height: 70,
+                                      decoration: BoxDecoration(
+                                          color: Color(0xFFEAEAEA),
+                                        borderRadius: BorderRadius.circular(10.0), // Bo tròn góc
+                                      ),
+                                      child:Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Padding(padding: EdgeInsets.only(top: 5,left: 0),
+                                                child: Center(
+                                                  child: Icon(Icons.login,color: Colors.orange,),
+                                                ),),
+                                              Padding(padding: EdgeInsets.only(left: 5),
+                                                child: Text("Check in",style: TextStyle(
+                                                    fontSize: 13,
+                                                    fontFamily: "Roboto",
+                                                    color: Colors.black),
+                                                ),),
+                                              Padding(padding: EdgeInsets.only(left: 10),
+                                                child: Center(
+                                                  child: Text("07:55", style: TextStyle(fontSize: 15, fontFamily: "Roboto",
+                                                      color: Colors.black,fontWeight: FontWeight.bold)),
+                                                ),),
+                                            ],
+                                          ),
+                                          Text("--"),
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Padding(padding: EdgeInsets.only(top: 5,left: 0),
+                                                child: Center(
+                                                  child: Icon(Icons.logout,color: Colors.orange,),
+                                                ),),
+                                              Padding(padding: EdgeInsets.only(right: 5),
+                                                child: Text("Check Out",style: TextStyle(
+                                                    fontSize: 13,
+                                                    fontFamily: "Roboto",
+                                                    color: Colors.black),
+                                                ),),
+                                              Padding(padding: EdgeInsets.only(right: 10),
+                                                child: Center(
+                                                  child: Text("00:00", style: TextStyle(fontSize: 15, fontFamily: "Roboto",
+                                                      color: Colors.black,fontWeight: FontWeight.bold)),
+                                                ),),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),),
+                              Padding(padding: EdgeInsets.only(top: 5, left: 10, right: 10),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Container(
+                                      width: 160,
+                                      height: 70,
+                                      decoration: BoxDecoration(
+                                        color: Color(0xFFEAEAEA),
+                                        borderRadius: BorderRadius.circular(10.0), // Bo tròn góc
+                                      ),
+                                      child:Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Padding(padding: EdgeInsets.only(top: 5,left: 0),
+                                                child: Center(
+                                                  child: Icon(Icons.login,color: Colors.orange,),
+                                                ),),
+                                              Padding(padding: EdgeInsets.only(left: 5),
+                                                child: Text("Check in",style: TextStyle(
+                                                    fontSize: 13,
+                                                    fontFamily: "Roboto",
+                                                    color: Colors.black),
+                                                ),),
+                                              Padding(padding: EdgeInsets.only(left: 10),
+                                                child: Center(
+                                                  child: Text("07:55", style: TextStyle(fontSize: 15, fontFamily: "Roboto",
+                                                      color: Colors.black,fontWeight: FontWeight.bold)),
+                                                ),),
+                                            ],
+                                          ),
+                                          Text("--"),
+                                          Column(
+                                            crossAxisAlignment: CrossAxisAlignment.center,
+                                            children: [
+                                              Padding(padding: EdgeInsets.only(top: 5,left: 0),
+                                                child: Center(
+                                                  child: Icon(Icons.logout,color: Colors.orange,),
+                                                ),),
+                                              Padding(padding: EdgeInsets.only(right: 5),
+                                                child: Text("Check Out",style: TextStyle(
+                                                    fontSize: 13,
+                                                    fontFamily: "Roboto",
+                                                    color: Colors.black),
+                                                ),),
+                                              Padding(padding: EdgeInsets.only(right: 10),
+                                                child: Center(
+                                                  child: Text("00:00", style: TextStyle(fontSize: 15, fontFamily: "Roboto",
+                                                      color: Colors.black,fontWeight: FontWeight.bold)),
+                                                ),),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),),
+                            ],
+                          ),
+
+                          Padding(padding: EdgeInsets.only(top: 10, left: 10, right: 10),
+                          child: Container(
+                            width: double.infinity,
+                            height: 120,
+                            decoration: BoxDecoration(
+                              color: Color(0xFFEAEAEA),
+                              borderRadius: BorderRadius.circular(10.0), // Bo tròn góc
+                            ),
+                            child: Column(
                               children: [
-                                Text(
-                                  formattedDate,
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    fontFamily: "Roboto",
+                                Container(
+                                  height: 20,
+                                  width: double.infinity,
+                                  color: Color(0xFF4B7BE5),
+                                  child: Center(
+                                    child:
+                                    Text(
+                                      formattedDate,
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontFamily: "Roboto",
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold
+                                      ),
+                                    ),
                                   ),
                                 ),
+                                Padding(padding: EdgeInsets.only(top: 10,left: 10,right: 10),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Padding(padding: EdgeInsets.only(left: 30),
+                                        child: Text("07:53",style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.black,
+                                            fontFamily: "Roboto",
+                                            fontSize: 25
+                                        ),),),
+                                        Padding(padding: EdgeInsets.only(top: 0,left: 30),
+                                        child: Container(
+                                          child: ElevatedButton(
+                                            style: ElevatedButton.styleFrom(
+                                              primary: Colors.orange, // Màu nền của nút
+                                              onPrimary: Colors.white, // Màu văn bản trên nút
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(8.0), // Bo tròn góc
+                                              ),
+                                            ),
+                                              onPressed:(){
+
+
+                                              },
+                                            child: Text("Vào làm"),
+                                          ),
+                                        ),),
+                                      ],
+                                    ),
+                                    Column(
+                                      children: [
+                                        Padding(padding: EdgeInsets.only(right: 30),
+                                          child: Text("07:53",style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              color: Colors.black,
+                                              fontFamily: "Roboto",
+                                              fontSize: 25
+                                          ),),),
+                                        Padding(padding: EdgeInsets.only(top: 0,right: 30),
+                                          child: Container(
+                                            child: ElevatedButton(
+                                              style: ElevatedButton.styleFrom(
+                                                primary: Colors.orange, // Màu nền của nút
+                                                onPrimary: Colors.white, // Màu văn bản trên nút
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.circular(8.0), // Bo tròn góc
+                                                ),
+                                              ),
+                                              onPressed:(){
+
+
+                                              },
+                                              child: Text("Vào làm"),
+
+                                            ),
+                                          ),),
+                                      ],
+                                    ),
+                                  ],
+                                ),),
                               ],
                             ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Card(
-                                  color: Colors.white60,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Container(
-                                      width: 150,
-                                      height: 50,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: <Widget>[
-                                              Padding(
-                                                  padding: EdgeInsets.only(
-                                                      bottom: 10),
-                                                  child: Text(
-                                                    "7g55 AM",
-                                                    style: TextStyle(
-                                                        fontFamily: "Roboto",
-                                                        color: Colors.orange,
-                                                        fontSize: 16),
-                                                  )),
-                                              Padding(
-                                                padding:
-                                                    EdgeInsets.only(bottom: 0),
-                                                child: Text("Giờ vào",
-                                                    style: TextStyle(
-                                                        fontSize: 14,
-                                                        fontFamily: "Roboto",
-                                                        color: Colors.black)),
-                                              ),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  elevation: 4.0,
-                                ),
-                                Card(
-                                  color: Colors.white60,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Container(
-                                      width: 150,
-                                      height: 50,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: <Widget>[
-                                              Padding(
-                                                  padding: EdgeInsets.only(
-                                                      bottom: 10),
-                                                  child: Text(
-                                                    "5g30 PM",
-                                                    style: TextStyle(
-                                                        fontFamily: "Roboto",
-                                                        color: Colors.orange,
-                                                        fontSize: 16),
-                                                  )),
-                                              Padding(
-                                                padding:
-                                                    EdgeInsets.only(bottom: 0),
-                                                child: Text("Giờ về",
-                                                    style: TextStyle(
-                                                        fontSize: 14,
-                                                        fontFamily: "Roboto",
-                                                        color: Colors.black)),
-                                              ),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  elevation: 4.0,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Card(
-                                  color: Colors.white60,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Container(
-                                      width: 150,
-                                      height: 50,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: <Widget>[
-                                              Padding(
-                                                  padding: EdgeInsets.only(
-                                                      bottom: 10),
-                                                  child: Text(
-                                                    "14",
-                                                    style: TextStyle(
-                                                        fontFamily: "Roboto",
-                                                        color: Colors.orange,
-                                                        fontSize: 16),
-                                                  )),
-                                              Padding(
-                                                padding:
-                                                    EdgeInsets.only(bottom: 0),
-                                                child: Text("Số ngày công",
-                                                    style: TextStyle(
-                                                        fontSize: 14,
-                                                        fontFamily: "Roboto",
-                                                        color: Colors.black)),
-                                              ),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  elevation: 4.0,
-                                ),
-                                Card(
-                                  color: Colors.white60,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Container(
-                                      width: 150,
-                                      height: 50,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: <Widget>[
-                                              Padding(
-                                                  padding: EdgeInsets.only(
-                                                      bottom: 10),
-                                                  child: Text(
-                                                    "20",
-                                                    style: TextStyle(
-                                                        fontFamily: "Roboto",
-                                                        color: Colors.orange,
-                                                        fontSize: 16),
-                                                  )),
-                                              Padding(
-                                                padding:
-                                                    EdgeInsets.only(bottom: 0),
-                                                child: Text("Số ngày nghĩ phép",
-                                                    style: TextStyle(
-                                                        fontSize: 14,
-                                                        fontFamily: "Roboto",
-                                                        color: Colors.black)),
-                                              ),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  elevation: 4.0,
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Card(
-                                  color: Colors.white60,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Container(
-                                      width: 150,
-                                      height: 50,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: <Widget>[
-                                              Padding(
-                                                  padding: EdgeInsets.only(
-                                                      bottom: 10),
-                                                  child: Text(
-                                                    "14",
-                                                    style: TextStyle(
-                                                        fontFamily: "Roboto",
-                                                        color: Colors.orange,
-                                                        fontSize: 16),
-                                                  )),
-                                              Padding(
-                                                padding:
-                                                    EdgeInsets.only(bottom: 0),
-                                                child: Text("Quên chấm công",
-                                                    style: TextStyle(
-                                                        fontSize: 14,
-                                                        fontFamily: "Roboto",
-                                                        color: Colors.black)),
-                                              ),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  elevation: 4.0,
-                                ),
-                                Card(
-                                  color: Colors.white60,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: Container(
-                                      width: 150,
-                                      height: 50,
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: <Widget>[
-                                              Padding(
-                                                  padding: EdgeInsets.only(
-                                                      bottom: 10),
-                                                  child: Text(
-                                                    "20",
-                                                    style: TextStyle(
-                                                        fontFamily: "Roboto",
-                                                        color: Colors.orange,
-                                                        fontSize: 16),
-                                                  )),
-                                              Padding(
-                                                padding:
-                                                    EdgeInsets.only(bottom: 0),
-                                                child: Text("Số phép năm",
-                                                    style: TextStyle(
-                                                        fontSize: 14,
-                                                        fontFamily: "Roboto",
-                                                        color: Colors.black)),
-                                              ),
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  elevation: 4.0,
-                                ),
-                              ],
-                            ),
-                          ),
+                          ),),
+
+                          // task
                           Padding(
                             padding:
                                 EdgeInsets.only(top: 40, left: 10, right: 10),
@@ -426,7 +340,11 @@ class _HomeScreen extends State<HomeScreen> {
                                         fontWeight: FontWeight.bold,
                                         fontFamily: "Roboto")),
                                 InkWell(
-                                  child: Text("Xem thêm"),
+                                  child: Text("Xem thêm",style: TextStyle(
+                                      fontSize: 13,
+                                      fontFamily: "Roboto",
+                                      color: Colors.black),
+                                  ),
                                   onTap: () {
                                     Navigator.push(
                                       context,

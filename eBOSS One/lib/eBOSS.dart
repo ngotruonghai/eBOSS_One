@@ -28,7 +28,7 @@ class _HomeWidgetState extends State<HomeWidget> {
   @override
   Widget build(BuildContext context) {
     return AnimatedSplashScreen(
-      duration: 3000,
+      duration: 2000,
       splash: Column(
         children: [
           Image.asset(

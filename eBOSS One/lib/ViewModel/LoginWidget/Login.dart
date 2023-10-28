@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import '../../Model/Login/LoginResponseModel.dart';
 import '../../Services/BaseServices/SharedPreferencesService.dart';
 import '../../Services/NetWork/NetWorkRequest.dart';
+import '../../Services/WidgetScreenSaver/WidgetScreenSaver.dart';
 import '../../View/Home/HomeView.dart';
 
 class MailLogin extends StatefulWidget {
@@ -20,47 +21,53 @@ class _MailLoginState extends State<MailLogin> {
   TextEditingController txtPassWord = TextEditingController();
   int check = 0;
   String? logError = "";
+  late OverlayEntry overlayEntry;
 
   void _LoginUser(BuildContext context) async {
+    LoadingOverlay.show(context);
     try {
       int check = 1;
       FocusScope.of(context).unfocus();
 
-      if(txtUser.text.isEmpty || txtPassWord.text.isEmpty)
-        {
-          logError="Kiểm tra lại tài khoản hoặc mật khẩu!";
+      if (txtUser.text.isEmpty || txtPassWord.text.isEmpty) {
+        logError = "Kiểm tra lại tài khoản hoặc mật khẩu!";
+      } else {
+        Map<String, dynamic> request = {
+          "userName": txtUser.text,
+          "password": txtPassWord.text
+        };
+        final response =
+            await NetWorkRequest.post("/eBOSS/api/Login/LoginUser", request);
+        final listData = LoginResponseModel.fromJson(response);
+        if (listData.data?.token != null) {
+          check = 1;
+        } else {
+          check = 0;
+          logError = "Sai tài khoản hoặc mật khẩu!";
         }
-      else
-        {
-          Map<String, dynamic> request = {
-            "userName": txtUser.text,
-            "password": txtPassWord.text
-          };
-          final response = await NetWorkRequest.post("/eBOSS/api/Login/LoginUser", request);
-          final listData = LoginResponseModel.fromJson(response);
-          if (listData.data?.token != null) {
-            check = 1;
-          } else {
-            check = 0;
-            logError="Sai tài khoản hoặc mật khẩu!";
-          }
-          //   Navigator.pushReplacement(
-          //       context,
-          //       MaterialPageRoute(builder: (context) => Home()));
-          // };
-          if (check == 1) {
-            final SharedPreferences prefs = await SharedPreferences.getInstance();
-            SharedPreferencesService.setString(KeyServices.KeyToken, listData.data!.token.toString());
-            SharedPreferencesService.setString(KeyServices.KeyUserName, listData.data!.userName.toString());
-            SharedPreferencesService.setString(KeyServices.KeyUserID, listData.data!.userID.toString());
-
-            await Navigator.pushReplacement(
-                context, MaterialPageRoute(builder: (context) => HomeView()));
-          }
+        //   Navigator.pushReplacement(
+        //       context,
+        //       MaterialPageRoute(builder: (context) => Home()));
+        // };
+        if (check == 1) {
+          final SharedPreferences prefs = await SharedPreferences.getInstance();
+          SharedPreferencesService.setString(
+              KeyServices.KeyToken, listData.data!.token.toString());
+          SharedPreferencesService.setString(
+              KeyServices.KeyUserName, listData.data!.userName.toString());
+          SharedPreferencesService.setString(
+              KeyServices.KeyUserID, listData.data!.userID.toString());
+          await Future.delayed(Duration(seconds: 3));
+          LoadingOverlay.hide(context);
+          await Navigator.pushReplacement(
+              context, MaterialPageRoute(builder: (context) => HomeView()));
         }
+      }
     } catch (e) {
-      logError = e.toString();
+      logError = "";
       check = -1;
+    } finally {
+      LoadingOverlay.hide(context);
     }
     setState(() {
       checkLogin = check;
@@ -90,7 +97,7 @@ class _MailLoginState extends State<MailLogin> {
                   padding: const EdgeInsets.only(top: 50),
                   child: (checkLogin == 1)
                       ? Text("")
-                      : MessageError(mess:logError ),
+                      : MessageError(mess: logError),
                 ),
                 Padding(
                     padding: const EdgeInsets.only(top: 10),
@@ -201,8 +208,12 @@ class MessageErrorCatch extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        "Lỗi hệ thống!" + mess.toString(),
-        style: TextStyle(color: Colors.orange, fontFamily: "Roboto", fontSize: 13, fontWeight: FontWeight.bold),
+        "Không kết nối được với Server",
+        style: TextStyle(
+            color: Colors.orange,
+            fontFamily: "Roboto",
+            fontSize: 14,
+            fontWeight: FontWeight.bold),
       ),
     );
   }

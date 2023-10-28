@@ -9,6 +9,8 @@ class CompanyNoticeViewModel extends StatelessWidget {
   Data data;
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    print(screenWidth);
     return Padding(
       padding: EdgeInsets.only(
           top: 0, left: 10, right: 10),
@@ -16,9 +18,9 @@ class CompanyNoticeViewModel extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
-        elevation: 4.0,
+        elevation: 2.0,
         child: SizedBox(
-          height: 70,
+          height: 80,
           width: double.infinity,
           child: Column(
             crossAxisAlignment:
@@ -35,15 +37,18 @@ class CompanyNoticeViewModel extends StatelessWidget {
                       color: Colors.green,
                       size: 20,
                     )),
-                    Text(
-                      data.notificationAbout.toString(),
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 13,
-                          fontFamily: "Roboto",
-                          fontWeight: FontWeight.bold),
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
+                    Container(
+                      width: screenWidth-70,
+                      child: Text(
+                          data.notificationAbout.toString(),
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 13,
+                            fontFamily: "Roboto",
+                            fontWeight: FontWeight.bold),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
                     )
                   ],
                 ),

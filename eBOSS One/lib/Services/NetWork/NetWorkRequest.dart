@@ -4,6 +4,7 @@ import '../BaseServices/HostService.dart';
 import '../BaseServices/SharedPreferencesService.dart';
 
 class NetWorkRequest {
+  static final timeout = Duration(seconds: 5);
   NetWorkRequest() {}
 
   static Future<Map<String, dynamic>> post(
@@ -16,7 +17,7 @@ class NetWorkRequest {
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(data),
-    );
+    ).timeout(timeout);
     return _handleResponse(response);
   }
 
@@ -31,7 +32,7 @@ class NetWorkRequest {
         'Content-Type': 'application/json',
       },
       body: jsonEncode(data),
-    );
+    ).timeout(timeout);
     return _handleResponse(response);
   }
 static Future<Map<String, dynamic>> GetJWT(String endpoint) async{
@@ -42,7 +43,8 @@ static Future<Map<String, dynamic>> GetJWT(String endpoint) async{
       'eBOSSONE': SharedPreferencesService.getString(KeyServices.KeyToken),
       'Content-Type': 'application/json',
     },
-  );
+  ).timeout(timeout);
+
   return _handleResponse(response);
 }
   static Map<String, dynamic> _handleResponse(http.Response response) {
