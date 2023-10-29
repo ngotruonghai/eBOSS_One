@@ -11,8 +11,6 @@ class UserInfoView extends StatefulWidget {
   State<UserInfoView> createState() => _UserInfoView();
 }
 
-
-
 class _UserInfoView extends State<UserInfoView> {
   Future<bool> loadData() async {
     await loaddataMissionUnFinish();
@@ -24,7 +22,8 @@ class _UserInfoView extends State<UserInfoView> {
   Future<String> loaddataMissionUnFinish() async {
     try {
       final responses = await NetWorkRequest.GetJWT(
-          "/eBOSS/api/UserInfo/GetUserInfoID?UserID="+await SharedPreferencesService.getString(KeyServices.KeyUserID));
+          "/eBOSS/api/UserInfo/GetUserInfoID?UserID=" +
+              await SharedPreferencesService.getString(KeyServices.KeyUserID));
       final UserInfo = UserInfoModel.fromJson(responses);
       listdata = UserInfo.data;
       return "Succes";
@@ -32,7 +31,6 @@ class _UserInfoView extends State<UserInfoView> {
       return e.toString();
     }
   }
-
 
   Future<void> _refreshData() async {
     // Giả định rằng bạn sẽ làm thao tác làm mới dữ liệu ở đây.
@@ -99,7 +97,10 @@ class _UserInfoView extends State<UserInfoView> {
                                                         CrossAxisAlignment
                                                             .start,
                                                     children: [
-                                                      Text(listdata![0].fullName.toString(),
+                                                      Text(
+                                                          listdata![0]
+                                                              .fullName
+                                                              .toString(),
                                                           style: TextStyle(
                                                               fontSize: 15,
                                                               fontWeight:
@@ -109,7 +110,11 @@ class _UserInfoView extends State<UserInfoView> {
                                                                   Colors.black,
                                                               fontFamily:
                                                                   "Roboto")),
-                                                      Text("Bộ phận: "+listdata![0].insuranceCompanyID.toString(),
+                                                      Text(
+                                                          "Bộ phận: " +
+                                                              listdata![0]
+                                                                  .insuranceCompanyID
+                                                                  .toString(),
                                                           style: TextStyle(
                                                               fontSize: 13,
                                                               color:
@@ -130,348 +135,405 @@ class _UserInfoView extends State<UserInfoView> {
                                 ),
                                 Container(
                                   color: Colors.white,
-                                  child: Padding(padding: EdgeInsets.symmetric(horizontal: 20,vertical: 00)
-                                  ,child: Column(
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 00),
+                                    child: Column(
                                       children: [
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
                                           children: [
-                                            Padding(padding: EdgeInsets.only(top: 10),
-                                            child: Text("Thông tin cá nhân",style: TextStyle(
-                                                fontSize: 13,
-                                                fontWeight:
-                                                FontWeight
-                                                    .bold,
-                                                color:
-                                                Colors.black,
-                                                fontFamily:
-                                                "Roboto"),),),
+                                            Padding(
+                                              padding: EdgeInsets.only(top: 10),
+                                              child: Text(
+                                                "Thông tin cá nhân",
+                                                style: TextStyle(
+                                                    fontSize: 13,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.black,
+                                                    fontFamily: "Roboto"),
+                                              ),
+                                            ),
                                           ],
                                         ),
-                                        Padding(padding: EdgeInsets.only(top: 10,bottom: 5),
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          children: [
-                                            Row(
-                                              mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                              children: [
-                                                Container(
-                                                  width:
-                                                  20, // Set your desired width
-                                                  height:
-                                                  20, // Set your desired height
-                                                  child: Image.asset('assets/Email.png'),
-                                                ),
-                                                Padding(
-                                                    padding:
-                                                    EdgeInsets.only(left: 10),
-                                                    child: Column(
-                                                      crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .start,
-                                                      children: [
-                                                        Text("Email",
-                                                            style: TextStyle(
-                                                                fontSize: 13,
-                                                                color:
-                                                                Colors.grey,
-                                                                fontFamily:
-                                                                "Roboto")),
-                                                        Text(listdata![0].emailFordward.toString(),
-                                                            style: TextStyle(
-                                                                fontSize: 13,
-                                                                color:
-                                                                Colors.black,
-                                                                fontFamily:
-                                                                "Roboto")),
-                                                      ],
-                                                    ))
-                                              ],
-                                            ),
-                                          ],
-                                        ),),
-                                        Padding(padding: EdgeInsets.only(top: 10,bottom: 5),
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          children: [
-                                            Row(
-                                              mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                              children: [
-                                                Container(
-                                                  width:
-                                                  20, // Set your desired width
-                                                  height:
-                                                  20, // Set your desired height
-                                                  child: Image.asset('assets/Phone.png'),
-                                                ),
-                                                Padding(
-                                                    padding:
-                                                    EdgeInsets.only(left: 10),
-                                                    child: Column(
-                                                      crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .start,
-                                                      children: [
-                                                        Text("Số điện thoại",
-                                                            style: TextStyle(
-                                                                fontSize: 13,
-                                                                color:
-                                                                Colors.grey,
-                                                                fontFamily:
-                                                                "Roboto")),
-                                                        Text(listdata![0].mobile.toString(),
-                                                            style: TextStyle(
-                                                                fontSize: 13,
-                                                                color:
-                                                                Colors.black,
-                                                                fontFamily:
-                                                                "Roboto")),
-                                                      ],
-                                                    ))
-                                              ],
-                                            ),
-                                          ],
-                                        ),),
-                                        Padding(padding: EdgeInsets.only(top: 10,bottom: 10),
-                                        child: Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          children: [
-                                            Row(
-                                              mainAxisAlignment:
-                                              MainAxisAlignment.start,
-                                              children: [
-                                                Container(
-                                                  width:
-                                                  20, // Set your desired width
-                                                  height:
-                                                  20, // Set your desired height
-                                                  child: Icon((Icons.cake),color: Colors.orange,size:25),
-                                                ),
-                                                Padding(
-                                                    padding:
-                                                    EdgeInsets.only(left: 10),
-                                                    child: Column(
-                                                      crossAxisAlignment:
-                                                      CrossAxisAlignment
-                                                          .start,
-                                                      children: [
-                                                        Text("SInh nhật",
-                                                            style: TextStyle(
-                                                                fontSize: 13,
-                                                                color:
-                                                                Colors.grey,
-                                                                fontFamily:
-                                                                "Roboto")),
-                                                        Text(listdata![0].birthDate.toString(),
-                                                            style: TextStyle(
-                                                                fontSize: 13,
-                                                                color:
-                                                                Colors.black,
-                                                                fontFamily:
-                                                                "Roboto")),
-                                                      ],
-                                                    ))
-                                              ],
-                                            ),
-                                          ],
-                                        ),)
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              top: 10, bottom: 5),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Container(
+                                                    width:
+                                                        20, // Set your desired width
+                                                    height:
+                                                        20, // Set your desired height
+                                                    child: Image.asset(
+                                                        'assets/Email.png'),
+                                                  ),
+                                                  Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: 10),
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text("Email",
+                                                              style: TextStyle(
+                                                                  fontSize: 13,
+                                                                  color: Colors
+                                                                      .grey,
+                                                                  fontFamily:
+                                                                      "Roboto")),
+                                                          Text(
+                                                              listdata![0]
+                                                                  .emailFordward
+                                                                  .toString(),
+                                                              style: TextStyle(
+                                                                  fontSize: 13,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  fontFamily:
+                                                                      "Roboto")),
+                                                        ],
+                                                      ))
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              top: 10, bottom: 5),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Container(
+                                                    width:
+                                                        20, // Set your desired width
+                                                    height:
+                                                        20, // Set your desired height
+                                                    child: Image.asset(
+                                                        'assets/Phone.png'),
+                                                  ),
+                                                  Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: 10),
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text("Số điện thoại",
+                                                              style: TextStyle(
+                                                                  fontSize: 13,
+                                                                  color: Colors
+                                                                      .grey,
+                                                                  fontFamily:
+                                                                      "Roboto")),
+                                                          Text(
+                                                              listdata![0]
+                                                                  .mobile
+                                                                  .toString(),
+                                                              style: TextStyle(
+                                                                  fontSize: 13,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  fontFamily:
+                                                                      "Roboto")),
+                                                        ],
+                                                      ))
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              top: 10, bottom: 10),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
+                                            children: [
+                                              Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
+                                                children: [
+                                                  Container(
+                                                    width:
+                                                        20, // Set your desired width
+                                                    height:
+                                                        20, // Set your desired height
+                                                    child: Icon((Icons.cake),
+                                                        color: Colors.orange,
+                                                        size: 25),
+                                                  ),
+                                                  Padding(
+                                                      padding: EdgeInsets.only(
+                                                          left: 10),
+                                                      child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text("SInh nhật",
+                                                              style: TextStyle(
+                                                                  fontSize: 13,
+                                                                  color: Colors
+                                                                      .grey,
+                                                                  fontFamily:
+                                                                      "Roboto")),
+                                                          Text(
+                                                              listdata![0]
+                                                                  .birthDate
+                                                                  .toString(),
+                                                              style: TextStyle(
+                                                                  fontSize: 13,
+                                                                  color: Colors
+                                                                      .black,
+                                                                  fontFamily:
+                                                                      "Roboto")),
+                                                        ],
+                                                      ))
+                                                ],
+                                              ),
+                                            ],
+                                          ),
+                                        )
                                       ],
-                                    ),),
+                                    ),
+                                  ),
                                 ),
                                 SizedBox(
                                   height: 10,
                                 ),
                                 Container(
                                   color: Colors.white,
-                                  child: Padding(padding: EdgeInsets.symmetric(horizontal: 20,vertical: 00)
-                                    ,child: Column(
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 00),
+                                    child: Column(
                                       children: [
                                         Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
                                           children: [
-                                            Padding(padding: EdgeInsets.only(top: 10),
-                                            child: Text("Thông tin công việc",style: TextStyle(
-                                                fontSize: 13,
-                                                fontWeight:
-                                                FontWeight
-                                                    .bold,
-                                                color:
-                                                Colors.black,
-                                                fontFamily:
-                                                "Roboto"),),)
+                                            Padding(
+                                              padding: EdgeInsets.only(top: 10),
+                                              child: Text(
+                                                "Thông tin công việc",
+                                                style: TextStyle(
+                                                    fontSize: 13,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.black,
+                                                    fontFamily: "Roboto"),
+                                              ),
+                                            )
                                           ],
                                         ),
-                                        Padding(padding: EdgeInsets.only(top: 10,bottom: 5),
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              top: 10, bottom: 5),
                                           child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
                                             children: [
                                               Row(
                                                 mainAxisAlignment:
-                                                MainAxisAlignment.start,
+                                                    MainAxisAlignment.start,
                                                 children: [
                                                   Container(
                                                     width:
-                                                    20, // Set your desired width
+                                                        20, // Set your desired width
                                                     height:
-                                                    20, // Set your desired height
-                                                    child: Image.asset('assets/Person.png'),
+                                                        20, // Set your desired height
+                                                    child: Image.asset(
+                                                        'assets/Person.png'),
                                                   ),
                                                   Padding(
-                                                      padding:
-                                                      EdgeInsets.only(left: 10),
+                                                      padding: EdgeInsets.only(
+                                                          left: 10),
                                                       child: Column(
                                                         crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
+                                                            CrossAxisAlignment
+                                                                .start,
                                                         children: [
                                                           Text("Mã nhân viên",
                                                               style: TextStyle(
                                                                   fontSize: 13,
-                                                                  color:
-                                                                  Colors.grey,
+                                                                  color: Colors
+                                                                      .grey,
                                                                   fontFamily:
-                                                                  "Roboto")),
-                                                          Text(listdata![0].employeeID.toString(),
+                                                                      "Roboto")),
+                                                          Text(
+                                                              listdata![0]
+                                                                  .employeeID
+                                                                  .toString(),
                                                               style: TextStyle(
                                                                   fontSize: 13,
-                                                                  color:
-                                                                  Colors.black,
+                                                                  color: Colors
+                                                                      .black,
                                                                   fontFamily:
-                                                                  "Roboto")),
+                                                                      "Roboto")),
                                                         ],
                                                       ))
                                                 ],
                                               ),
                                             ],
-                                          ),),
-                                        Padding(padding: EdgeInsets.only(top: 10,bottom: 5),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              top: 10, bottom: 5),
                                           child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
                                             children: [
                                               Row(
                                                 mainAxisAlignment:
-                                                MainAxisAlignment.start,
+                                                    MainAxisAlignment.start,
                                                 children: [
                                                   Container(
                                                     width:
-                                                    20, // Set your desired width
+                                                        20, // Set your desired width
                                                     height:
-                                                    20, // Set your desired height
-                                                    child: Image.asset('assets/Perm contact calendar.png'),
+                                                        20, // Set your desired height
+                                                    child: Image.asset(
+                                                        'assets/Perm contact calendar.png'),
                                                   ),
                                                   Padding(
-                                                      padding:
-                                                      EdgeInsets.only(left: 10),
+                                                      padding: EdgeInsets.only(
+                                                          left: 10),
                                                       child: Column(
                                                         crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
+                                                            CrossAxisAlignment
+                                                                .start,
                                                         children: [
-                                                          Text("Trạng thái hợp đồng",
+                                                          Text(
+                                                              "Trạng thái hợp đồng",
                                                               style: TextStyle(
                                                                   fontSize: 13,
-                                                                  color:
-                                                                  Colors.grey,
+                                                                  color: Colors
+                                                                      .grey,
                                                                   fontFamily:
-                                                                  "Roboto")),
+                                                                      "Roboto")),
                                                           Text("0968103653",
                                                               style: TextStyle(
                                                                   fontSize: 13,
-                                                                  color:
-                                                                  Colors.black,
+                                                                  color: Colors
+                                                                      .black,
                                                                   fontFamily:
-                                                                  "Roboto")),
+                                                                      "Roboto")),
                                                         ],
                                                       ))
                                                 ],
                                               ),
                                             ],
-                                          ),),
-                                        Padding(padding: EdgeInsets.only(top: 10,bottom: 5),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              top: 10, bottom: 5),
                                           child: Row(
-                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
                                             children: [
                                               Row(
                                                 mainAxisAlignment:
-                                                MainAxisAlignment.start,
+                                                    MainAxisAlignment.start,
                                                 children: [
                                                   Container(
                                                     width:
-                                                    20, // Set your desired width
+                                                        20, // Set your desired width
                                                     height:
-                                                    20, // Set your desired height
-                                                    child: Image.asset('assets/Calendar view day.png'),
+                                                        20, // Set your desired height
+                                                    child: Image.asset(
+                                                        'assets/Calendar view day.png'),
                                                   ),
                                                   Padding(
-                                                      padding:
-                                                      EdgeInsets.only(left: 10),
-
+                                                      padding: EdgeInsets.only(
+                                                          left: 10),
                                                       child: Column(
                                                         crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
+                                                            CrossAxisAlignment
+                                                                .start,
                                                         children: [
                                                           Text("Mã thiết bị",
                                                               style: TextStyle(
                                                                   fontSize: 13,
-                                                                  color:
-                                                                  Colors.grey,
+                                                                  color: Colors
+                                                                      .grey,
                                                                   fontFamily:
-                                                                  "Roboto")),
-                                                          Text("asd1564ds15161dsada",
+                                                                      "Roboto")),
+                                                          Text(
+                                                              "asd1564ds15161dsada",
                                                               style: TextStyle(
                                                                   fontSize: 13,
-                                                                  color:
-                                                                  Colors.black,
+                                                                  color: Colors
+                                                                      .black,
                                                                   fontFamily:
-                                                                  "Roboto")),
+                                                                      "Roboto")),
                                                         ],
                                                       ))
                                                 ],
                                               ),
                                             ],
-                                          ),)
+                                          ),
+                                        )
                                       ],
-                                    ),),
+                                    ),
+                                  ),
                                 ),
                                 SizedBox(
                                   height: 10,
                                 ),
                                 Container(
-                                  child: Padding(padding: EdgeInsets.symmetric(horizontal: 20,vertical: 00),
-                                  child:InkWell(
-                                    onTap: () async{
-                                     await SharedPreferencesService.clear();
-                                      Navigator.pushReplacement(
-                                          context, MaterialPageRoute(builder: (context) => Login()));
-                                    },
-                                    child: Row(
-                                      mainAxisAlignment:
-                                      MainAxisAlignment.start,
-                                      children: [
-                                        Container(
-                                          width:
-                                          20, // Set your desired width
-                                          height:
-                                          20, // Set your desired height
-                                          child: Image.asset('assets/Logout.png'),
-                                        ),
-                                        Padding(
-                                          padding:
-                                          EdgeInsets.only(left: 10),
-                                          child: Text("Đăng xuất",
-                                              style: TextStyle(
-                                                  fontSize: 13,
-                                                  color:
-                                                  Colors.black54,
-                                                  fontWeight: FontWeight.bold,
-                                                  fontFamily:
-                                                  "Roboto")),)
-                                      ],
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 20, vertical: 00),
+                                    child: InkWell(
+                                      onTap: () async {
+                                        await SharedPreferencesService.clear();
+                                        Navigator.pushReplacement(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => Login()));
+                                      },
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.start,
+                                        children: [
+                                          Container(
+                                            width: 20, // Set your desired width
+                                            height:
+                                                20, // Set your desired height
+                                            child: Image.asset(
+                                                'assets/Logout.png'),
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.only(left: 10),
+                                            child: Text("Đăng xuất",
+                                                style: TextStyle(
+                                                    fontSize: 13,
+                                                    color: Colors.black54,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontFamily: "Roboto")),
+                                          )
+                                        ],
+                                      ),
                                     ),
-                                  ),),
+                                  ),
                                 )
                               ],
                             ),

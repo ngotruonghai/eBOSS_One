@@ -78,7 +78,7 @@ class CheckLoginToken extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.data == true) {
             // Người dùng đã đăng nhập, chuyển đến màn hình chính
-            return HomeView();
+            return Login();
           } else {
             // Người dùng chưa đăng nhập, chuyển đến màn hình đăng nhập
             return Login();

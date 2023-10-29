@@ -4,6 +4,7 @@ import '../../Model/MissionUnFinish/DataMissionUnFinishModel.dart';
 import '../../Services/BaseServices/SharedPreferencesService.dart';
 import '../../Services/NetWork/NetWorkRequest.dart';
 import '../../ViewModel/Task/ListTaskViewModel.dart';
+import '../Statistical/Statistical.dart';
 
 class TaskDetail extends StatefulWidget {
   @override
@@ -78,7 +79,7 @@ class _TaskDetailState extends State<TaskDetail> {
         body: TabBarView(
           children: [
             TaskManagement(),
-            Icon(Icons.directions_transit),
+            Statistical(),
             Icon(Icons.directions_bike),
           ],
         ),

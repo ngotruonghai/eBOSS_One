@@ -186,19 +186,19 @@ class _HomeScreen extends State<HomeScreen> {
                                           Column(
                                             crossAxisAlignment: CrossAxisAlignment.center,
                                             children: [
-                                              Padding(padding: EdgeInsets.only(top: 5,left: 0),
+                                              Padding(padding: EdgeInsets.only(top: 7,left: 0),
                                                 child: Center(
-                                                  child: Icon(Icons.login,color: Colors.orange,),
+                                                  child: Icon(Icons.calendar_month),
                                                 ),),
                                               Padding(padding: EdgeInsets.only(left: 5),
-                                                child: Text("Check in",style: TextStyle(
+                                                child: Text("Đã chấm",style: TextStyle(
                                                     fontSize: 13,
                                                     fontFamily: "Roboto",
                                                     color: Colors.black),
                                                 ),),
-                                              Padding(padding: EdgeInsets.only(left: 10),
+                                              Padding(padding: EdgeInsets.only(left: 0),
                                                 child: Center(
-                                                  child: Text("07:55", style: TextStyle(fontSize: 15, fontFamily: "Roboto",
+                                                  child: Text("18", style: TextStyle(fontSize: 15, fontFamily: "Roboto",
                                                       color: Colors.black,fontWeight: FontWeight.bold)),
                                                 ),),
                                             ],
@@ -212,7 +212,7 @@ class _HomeScreen extends State<HomeScreen> {
                                                   child: Icon(Icons.logout,color: Colors.orange,),
                                                 ),),
                                               Padding(padding: EdgeInsets.only(right: 5),
-                                                child: Text("Check Out",style: TextStyle(
+                                                child: Text("Quên chấm",style: TextStyle(
                                                     fontSize: 13,
                                                     fontFamily: "Roboto",
                                                     color: Colors.black),
@@ -238,7 +238,7 @@ class _HomeScreen extends State<HomeScreen> {
                             height: 120,
                             decoration: BoxDecoration(
                               color: Color(0xFFEAEAEA),
-                              borderRadius: BorderRadius.circular(10.0), // Bo tròn góc
+                              borderRadius: BorderRadius.circular(20.0), // Bo tròn góc
                             ),
                             child: Column(
                               children: [
@@ -274,19 +274,24 @@ class _HomeScreen extends State<HomeScreen> {
                                         ),),),
                                         Padding(padding: EdgeInsets.only(top: 0,left: 30),
                                         child: Container(
+                                          width: 100,
+                                          height: 40,
                                           child: ElevatedButton(
                                             style: ElevatedButton.styleFrom(
                                               primary: Colors.orange, // Màu nền của nút
-                                              onPrimary: Colors.white, // Màu văn bản trên nút
+                                              onPrimary: Colors.white,// Màu văn bản trên nút
                                               shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(8.0), // Bo tròn góc
+                                                borderRadius: BorderRadius.circular(10.0), // Bo tròn góc
                                               ),
                                             ),
                                               onPressed:(){
 
 
                                               },
-                                            child: Text("Vào làm"),
+                                            child: Text("VÀO LÀM",style: TextStyle(
+                                                fontSize: 13,
+                                                fontFamily: "Roboto",
+                                                color: Colors.white)),
                                           ),
                                         ),),
                                       ],
@@ -302,6 +307,8 @@ class _HomeScreen extends State<HomeScreen> {
                                           ),),),
                                         Padding(padding: EdgeInsets.only(top: 0,right: 30),
                                           child: Container(
+                                            width: 100,
+                                            height: 40,
                                             child: ElevatedButton(
                                               style: ElevatedButton.styleFrom(
                                                 primary: Colors.orange, // Màu nền của nút
@@ -314,7 +321,10 @@ class _HomeScreen extends State<HomeScreen> {
 
 
                                               },
-                                              child: Text("Vào làm"),
+                                              child: Text("RA VỀ",style: TextStyle(
+                                                  fontSize: 13,
+                                                  fontFamily: "Roboto",
+                                                  color: Colors.white)),
 
                                             ),
                                           ),),
@@ -336,7 +346,7 @@ class _HomeScreen extends State<HomeScreen> {
                                 Text("Nhiệm vụ hôm nay",
                                     style: TextStyle(
                                         fontSize: 15,
-                                        color: Colors.black,
+                                        color: Color(0xFF4B7BE5),
                                         fontWeight: FontWeight.bold,
                                         fontFamily: "Roboto")),
                                 InkWell(

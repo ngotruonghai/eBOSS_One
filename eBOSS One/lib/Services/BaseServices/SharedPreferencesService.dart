@@ -11,6 +11,9 @@ class KeyServices{
   static String get KeyUserName{
     return "UserName";
   }
+  static String get keyPassWord{
+    return "PassWord";
+  }
 }
 
 class SharedPreferencesService {
