@@ -4,6 +4,7 @@ import '../../Model/MissionUnFinish/DataMissionUnFinishModel.dart';
 import '../../Services/BaseServices/SharedPreferencesService.dart';
 import '../../Services/NetWork/NetWorkRequest.dart';
 import '../../ViewModel/Task/ListTaskViewModel.dart';
+import '../Statistical/ReportView.dart';
 import '../Statistical/Statistical.dart';
 
 class TaskDetail extends StatefulWidget {
@@ -45,7 +46,7 @@ class _TaskDetailState extends State<TaskDetail> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color(0xFFe67e22),
+          backgroundColor: Color(0xFFFED801C),
           title: Text("Quản lý nhiệm vụ"),
           bottom: const TabBar(
             tabs: [
@@ -80,7 +81,7 @@ class _TaskDetailState extends State<TaskDetail> {
           children: [
             TaskManagement(),
             Statistical(),
-            Icon(Icons.directions_bike),
+            ReportView(),
           ],
         ),
         floatingActionButton: FloatingActionButton(

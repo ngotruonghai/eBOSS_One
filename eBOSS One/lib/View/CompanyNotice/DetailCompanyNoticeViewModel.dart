@@ -1,13 +1,35 @@
 import 'package:flutter/material.dart';
 
+import '../../Model/CompanyNoticeRecord/ListCompanyNotice_Deatil.dart';
+import '../../Services/NetWork/NetWorkRequest.dart';
+
 class DetailCompanyNoticeViewModel extends StatefulWidget {
+  DetailCompanyNoticeViewModel({
+    super.key,required this.notificationID
+  });
+  final String notificationID;
+
   @override
   State<DetailCompanyNoticeViewModel> createState() =>
       _DetailCompanyNoticeViewModel();
 }
 
-class _DetailCompanyNoticeViewModel
-    extends State<DetailCompanyNoticeViewModel> {
+class _DetailCompanyNoticeViewModel extends State<DetailCompanyNoticeViewModel> {
+
+  List<Data>? listdata= null;
+  // Call api
+  Future<Object?> loaddataCompanyNotice() async {
+    try {
+      final responses = await NetWorkRequest.GetJWT(
+          "/eBOSS/api/CompanyNoticeRecord/ListCompanyNotice_Deatil?NotificationID="+widget.notificationID);
+      final CompanyNotice = ListCompanyNotice_Deatil.fromJson(responses);
+      listdata = CompanyNotice.data;
+      return  CompanyNotice.data;
+    } catch (e) {
+      return e.toString();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -25,7 +47,7 @@ class _DetailCompanyNoticeViewModel
               Padding(
                 padding: EdgeInsets.only(top: 10),
                 child: Text(
-                  "Thông tin chung",
+                  "Thông tin chung"+widget.notificationID,
                   style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,

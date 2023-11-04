@@ -14,9 +14,10 @@ class _DrawerHomeState extends State<DrawerHome> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: const Color(0xFF70A1FF),
+      backgroundColor: const Color(0xFFFF7034),
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Color(0xFFFED801C),
           title: const Text("Danh mục"),
 
         ),

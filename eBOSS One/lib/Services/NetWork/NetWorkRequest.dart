@@ -4,7 +4,7 @@ import '../BaseServices/HostService.dart';
 import '../BaseServices/SharedPreferencesService.dart';
 
 class NetWorkRequest {
-  static final timeout = Duration(seconds: 5);
+  static final timeout = Duration(seconds: 20);
   NetWorkRequest() {}
 
   static Future<Map<String, dynamic>> post(
@@ -17,7 +17,7 @@ class NetWorkRequest {
         'Content-Type': 'application/json; charset=UTF-8',
       },
       body: jsonEncode(data),
-    ).timeout(timeout);
+    ).timeout(Duration(seconds: 5));
     return _handleResponse(response);
   }
 
@@ -53,7 +53,7 @@ static Future<Map<String, dynamic>> GetJWT(String endpoint) async{
       return json.decode(response.body);
     }  else {
       // Xử lý lỗi và thông báo cho phía gọi
-      throw Exception('Response Error Log: ${response.statusCode.toString()}.');
+      throw Exception('${response.statusCode.toString()}');
     }
   }
 }

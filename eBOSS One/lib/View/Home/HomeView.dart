@@ -4,6 +4,7 @@ import '../../View/Home/HomeDrawerView.dart';
 import '../../View/Home/HomeScreenView.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../Calendar/CalendarView.dart';
 import '../UserInfo/UserInfoView.dart';
 
 
@@ -20,7 +21,8 @@ class _HomeViewState extends State<HomeView> {
   int _selectedIndex = 0;
   final List<Widget> _screens = [
     HomeScreen(),
-    Screen2(),
+    Calendar(),
+    Screen3(),
     Screen3(),
     UserInfoView(),
   ];
@@ -47,7 +49,7 @@ class _HomeViewState extends State<HomeView> {
           ],
         ),
         centerTitle: true,
-        backgroundColor: const Color(0xFFe67e22),
+        backgroundColor: const Color(0xFFFED801C),
         leading: Builder(builder: (context) {
           return IconButton(
             icon: const Icon(
@@ -115,8 +117,10 @@ class _AppBarBootomState extends State<AppBarBootom> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: "Trang chủ"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.add_to_photos_outlined), label: "Chức năng"),
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Cài đặt"),
+              icon: Icon(Icons.calendar_month), label: "Lịch"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.add_box_rounded), label: "Đơn phép"),
+          BottomNavigationBarItem(icon: Icon(Icons.apps_outage), label: "Chức năng"),
           BottomNavigationBarItem(
               icon: Icon(Icons.account_box_rounded), label: "Hồ sơ")
         ],
@@ -124,16 +128,6 @@ class _AppBarBootomState extends State<AppBarBootom> {
           clickOnTab(index);
         },
       ),
-    );
-  }
-}
-
-
-class Screen2 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Screen 2'),
     );
   }
 }

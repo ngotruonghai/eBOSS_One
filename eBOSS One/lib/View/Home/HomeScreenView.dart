@@ -199,7 +199,7 @@ class _HomeScreen extends State<HomeScreen> {
                                               Padding(padding: EdgeInsets.only(left: 0),
                                                 child: Center(
                                                   child: Text("18", style: TextStyle(fontSize: 15, fontFamily: "Roboto",
-                                                      color: Colors.black,fontWeight: FontWeight.bold)),
+                                                      color: Colors.blue,fontWeight: FontWeight.bold)),
                                                 ),),
                                             ],
                                           ),
@@ -219,8 +219,8 @@ class _HomeScreen extends State<HomeScreen> {
                                                 ),),
                                               Padding(padding: EdgeInsets.only(right: 10),
                                                 child: Center(
-                                                  child: Text("00:00", style: TextStyle(fontSize: 15, fontFamily: "Roboto",
-                                                      color: Colors.black,fontWeight: FontWeight.bold)),
+                                                  child: Text("1", style: TextStyle(fontSize: 15, fontFamily: "Roboto",
+                                                      color: Colors.red,fontWeight: FontWeight.bold)),
                                                 ),),
                                             ],
                                           ),
@@ -238,14 +238,22 @@ class _HomeScreen extends State<HomeScreen> {
                             height: 120,
                             decoration: BoxDecoration(
                               color: Color(0xFFEAEAEA),
-                              borderRadius: BorderRadius.circular(20.0), // Bo tròn góc
+                              borderRadius: BorderRadius.circular(20.0),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey, // Màu của bóng
+                                  offset: Offset(0, 2), // Độ lệch theo trục X và Y
+                                  blurRadius: 4, // Độ mờ của bóng
+                                  spreadRadius: 0, // Phạm vi của bóng
+                                ),
+                              ],// Bo tròn góc
                             ),
                             child: Column(
                               children: [
                                 Container(
                                   height: 20,
                                   width: double.infinity,
-                                  color: Color(0xFF4B7BE5),
+                                  color: Color(0xFFED801C),
                                   child: Center(
                                     child:
                                     Text(
@@ -278,7 +286,7 @@ class _HomeScreen extends State<HomeScreen> {
                                           height: 40,
                                           child: ElevatedButton(
                                             style: ElevatedButton.styleFrom(
-                                              primary: Colors.orange, // Màu nền của nút
+                                              primary: Color(0xFF0984e3), // Màu nền của nút
                                               onPrimary: Colors.white,// Màu văn bản trên nút
                                               shape: RoundedRectangleBorder(
                                                 borderRadius: BorderRadius.circular(10.0), // Bo tròn góc
@@ -311,7 +319,7 @@ class _HomeScreen extends State<HomeScreen> {
                                             height: 40,
                                             child: ElevatedButton(
                                               style: ElevatedButton.styleFrom(
-                                                primary: Colors.orange, // Màu nền của nút
+                                                primary: Color(0xFF218c74), // Màu nền của nút
                                                 onPrimary: Colors.white, // Màu văn bản trên nút
                                                 shape: RoundedRectangleBorder(
                                                   borderRadius: BorderRadius.circular(8.0), // Bo tròn góc
@@ -346,14 +354,14 @@ class _HomeScreen extends State<HomeScreen> {
                                 Text("Nhiệm vụ hôm nay",
                                     style: TextStyle(
                                         fontSize: 15,
-                                        color: Color(0xFF4B7BE5),
+                                        color: Colors.black,
                                         fontWeight: FontWeight.bold,
                                         fontFamily: "Roboto")),
                                 InkWell(
                                   child: Text("Xem thêm",style: TextStyle(
                                       fontSize: 13,
                                       fontFamily: "Roboto",
-                                      color: Colors.black),
+                                      color: Color(0xFF4B7BE5)),
                                   ),
                                   onTap: () {
                                     Navigator.push(
@@ -373,7 +381,7 @@ class _HomeScreen extends State<HomeScreen> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Nhiệm vụ chưa hoàn thành: ",
+                                  "Nhiệm vụ chưa hoàn thành ",
                                   style: TextStyle(
                                       fontSize: 13,
                                       fontFamily: "Roboto",
@@ -718,7 +726,7 @@ class _HomeScreen extends State<HomeScreen> {
                           ),
                           Padding(
                             padding:
-                                EdgeInsets.only(top: 40, left: 10, right: 10),
+                                EdgeInsets.only(top: 20, left: 10, right: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -729,7 +737,11 @@ class _HomeScreen extends State<HomeScreen> {
                                         fontWeight: FontWeight.bold,
                                         fontFamily: "Roboto")),
                                 InkWell(
-                                  child: Text("Xem thêm"),
+                                  child: Text("Xem thêm",style: TextStyle(
+                                    color: Color(0xFF4B7BE5),
+                                    fontSize: 13,
+                                    fontFamily: "Roboto"
+                                  ),),
                                   onTap: () {
                                     Navigator.push(
                                       context,
@@ -766,7 +778,7 @@ class _HomeScreen extends State<HomeScreen> {
                                           padding: const EdgeInsets.all(8.0),
                                           child: Container(
                                               width: 180,
-                                              height: 50,
+                                              height: 60,
                                               child: Row(
                                                 mainAxisAlignment:
                                                     MainAxisAlignment.start,
@@ -942,7 +954,7 @@ class _HomeScreen extends State<HomeScreen> {
                           ),
                           Padding(
                             padding: EdgeInsets.only(
-                                top: 40, left: 10, right: 10, bottom: 10),
+                                top: 20, left: 10, right: 10, bottom: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -953,7 +965,11 @@ class _HomeScreen extends State<HomeScreen> {
                                         fontWeight: FontWeight.bold,
                                         fontFamily: "Roboto")),
                                 InkWell(
-                                  child: Text("Xem thêm"),
+                                  child: Text("Xem thêm",style: TextStyle(
+                                      color: Color(0xFF4B7BE5),
+                                      fontSize: 13,
+                                      fontFamily: "Roboto"
+                                  )),
                                   onTap: () {
                                     Navigator.push(
                                       context,

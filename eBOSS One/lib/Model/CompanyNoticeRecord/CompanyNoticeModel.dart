@@ -34,6 +34,7 @@ class Data {
   String? recordDate;
   String? handlerName;
   String? singerName;
+  String? notificationID;
 
   Data(
       {this.companyID,
@@ -41,7 +42,8 @@ class Data {
         this.description,
         this.recordDate,
         this.handlerName,
-        this.singerName});
+        this.singerName,
+        this.notificationID});
 
   Data.fromJson(Map<String, dynamic> json) {
     companyID = json['companyID'];
@@ -50,6 +52,7 @@ class Data {
     recordDate = json['recordDate'];
     handlerName = json['handlerName'];
     singerName = json['singerName'];
+    notificationID = json['notificationID'];
   }
 
   Map<String, dynamic> toJson() {
@@ -60,6 +63,7 @@ class Data {
     data['recordDate'] = this.recordDate;
     data['handlerName'] = this.handlerName;
     data['singerName'] = this.singerName;
+    data['notificationID'] = this.notificationID;
     return data;
   }
 }

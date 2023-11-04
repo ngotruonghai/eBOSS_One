@@ -48,192 +48,254 @@ class _Statistical extends State<Statistical> {
                   child: ListView.builder(
                       itemCount: 1,
                       itemBuilder: (context, index) {
-                        return Padding(padding: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-                        child: Column(
-                          children: [
-                            Padding(padding: EdgeInsets.only(bottom: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Container(
-                                  width: 150,
-                                  height: 150,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10.0), // Border radius
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      SizedBox(
-                                        height: 10,
+                        return Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 10),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(bottom: 10),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      width: 150,
+                                      height: 150,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(
+                                            10.0), // Border radius
                                       ),
-                                      Text("Tất cả",style: TextStyle(
-                                          fontSize: 20,
-                                          fontFamily: "Roboto",
-                                          color: Colors.grey)),
-                                      Padding(padding: EdgeInsets.only(top: 10,bottom: 10),
-                                          child: Text("18",style: TextStyle(
-                                              fontSize: 30,
-                                              fontFamily: "Roboto",
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.black),)),
-
-                                      Text("Công việc",style: TextStyle(
-                                          fontSize: 20,
-                                          fontFamily: "Roboto",
-                                          color: Colors.grey)),
-                                      SizedBox(
-                                        height: 10,
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text("Tất cả",
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontFamily: "Roboto",
+                                                  color: Colors.grey)),
+                                          Padding(
+                                              padding: EdgeInsets.only(
+                                                  top: 10, bottom: 10),
+                                              child: Text(
+                                                "18",
+                                                style: TextStyle(
+                                                    fontSize: 30,
+                                                    fontFamily: "Roboto",
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.black),
+                                              )),
+                                          Text("Công việc",
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontFamily: "Roboto",
+                                                  color: Colors.grey)),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Icon(
+                                            Icons.work,
+                                            size: 20,
+                                          )
+                                        ],
                                       ),
-                                      Icon(Icons.work,size: 20,)
-                                    ],
-                                  ),
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    Container(
+                                      width: 150,
+                                      height: 150,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(
+                                            10.0), // Border radius
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text("Đang xử lý",
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontFamily: "Roboto",
+                                                  color: Colors.grey)),
+                                          Padding(
+                                              padding: EdgeInsets.only(
+                                                  top: 10, bottom: 10),
+                                              child: Text(
+                                                "3",
+                                                style: TextStyle(
+                                                    fontSize: 30,
+                                                    fontFamily: "Roboto",
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.orange),
+                                              )),
+                                          Text("Công việc",
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontFamily: "Roboto",
+                                                  color: Colors.grey)),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Icon(
+                                            Icons.work_history,
+                                            size: 20,
+                                            color: Colors.orange,
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                SizedBox(
-                                  width: 20,
-                                ),
-                                Container(
-                                  width: 150,
-                                  height: 150,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10.0), // Border radius
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Text("Đang xử lý",style: TextStyle(
-                                          fontSize: 20,
-                                          fontFamily: "Roboto",
-                                          color: Colors.grey)),
-                                      Padding(padding: EdgeInsets.only(top: 10,bottom: 10),
-                                          child: Text("3",style: TextStyle(
-                                              fontSize: 30,
-                                              fontFamily: "Roboto",
-                                              fontWeight: FontWeight.bold,
-                                              color: Colors.orange),)),
-
-                                      Text("Công việc",style: TextStyle(
-                                          fontSize: 20,
-                                          fontFamily: "Roboto",
-                                          color: Colors.grey)),
-                                      SizedBox(
-                                        height: 10,
-                                      ),
-                                      Icon(Icons.work_history,size: 20,color: Colors.orange,)
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),),
-                            Padding(padding: EdgeInsets.only(bottom: 10),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    width: 150,
-                                    height: 150,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10.0), // Border radius
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text("Tất cả",style: TextStyle(
-                                            fontSize: 20,
-                                            fontFamily: "Roboto",
-                                            color: Colors.grey)),
-                                        Padding(padding: EdgeInsets.only(top: 10,bottom: 10),
-                                            child: Text("18",style: TextStyle(
-                                                fontSize: 30,
-                                                fontFamily: "Roboto",
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.black),)),
-
-                                        Text("Công việc",style: TextStyle(
-                                            fontSize: 20,
-                                            fontFamily: "Roboto",
-                                            color: Colors.grey)),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Icon(Icons.work,size: 20,)
-                                      ],
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: 20,
-                                  ),
-                                  Container(
-                                    width: 150,
-                                    height: 150,
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.circular(10.0), // Border radius
-                                    ),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Text("Đang xử lý",style: TextStyle(
-                                            fontSize: 20,
-                                            fontFamily: "Roboto",
-                                            color: Colors.grey)),
-                                        Padding(padding: EdgeInsets.only(top: 10,bottom: 10),
-                                            child: Text("3",style: TextStyle(
-                                                fontSize: 30,
-                                                fontFamily: "Roboto",
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.orange),)),
-
-                                        Text("Công việc",style: TextStyle(
-                                            fontSize: 20,
-                                            fontFamily: "Roboto",
-                                            color: Colors.grey)),
-                                        SizedBox(
-                                          height: 10,
-                                        ),
-                                        Icon(Icons.work_history,size: 20,color: Colors.orange,)
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),),
-                            Padding(padding: EdgeInsets.only(top: 10),
-                            child:  Container(
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(10.0), // Border radius
                               ),
-                              child: Padding(padding: EdgeInsets.only(top: 20,bottom: 20),
-                              child: PieChart(
-                                dataMap: dataMap,
-                                chartRadius: MediaQuery.of(context).size.width / 1.7,
-                                legendOptions: LegendOptions(
-                                  legendPosition: LegendPosition.right,
+                              Padding(
+                                padding: EdgeInsets.only(bottom: 10),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Container(
+                                      width: 150,
+                                      height: 150,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(
+                                            10.0), // Border radius
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text("Đã hoàn thành",
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontFamily: "Roboto",
+                                                  color: Colors.grey)),
+                                          Padding(
+                                              padding: EdgeInsets.only(
+                                                  top: 10, bottom: 10),
+                                              child: Text(
+                                                "20",
+                                                style: TextStyle(
+                                                    fontSize: 30,
+                                                    fontFamily: "Roboto",
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.lightBlueAccent),
+                                              )),
+                                          Text("Công việc",
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontFamily: "Roboto",
+                                                  color: Colors.grey)),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Icon(
+                                            Icons.check_circle,
+                                            size: 20,
+                                            color: Colors.lightBlueAccent,
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(
+                                      width: 20,
+                                    ),
+                                    Container(
+                                      width: 150,
+                                      height: 150,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(
+                                            10.0), // Border radius
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text("Chưa làm",
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontFamily: "Roboto",
+                                                  color: Colors.grey)),
+                                          Padding(
+                                              padding: EdgeInsets.only(
+                                                  top: 10, bottom: 10),
+                                              child: Text(
+                                                "1",
+                                                style: TextStyle(
+                                                    fontSize: 30,
+                                                    fontFamily: "Roboto",
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.redAccent),
+                                              )),
+                                          Text("Công việc",
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  fontFamily: "Roboto",
+                                                  color: Colors.grey)),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Icon(
+                                            Icons.dangerous_rounded,
+                                            size: 20,
+                                            color: Colors.redAccent,
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                                chartValuesOptions: ChartValuesOptions(
-                                  showChartValuesInPercentage: true,
-                                  showChartValueBackground: true,
-                                  showChartValues: true,
-                                  showChartValuesOutside: true,
-                                  decimalPlaces: 1,
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(top: 10),
+                                child: Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(
+                                        10.0), // Border radius
+                                  ),
+                                  child: Padding(
+                                    padding:
+                                        EdgeInsets.only(top: 20, bottom: 20),
+                                    child: PieChart(
+                                      dataMap: dataMap,
+                                      chartRadius:
+                                          MediaQuery.of(context).size.width /
+                                              1.7,
+                                      legendOptions: LegendOptions(
+                                        legendPosition: LegendPosition.right,
+                                      ),
+                                      chartValuesOptions: ChartValuesOptions(
+                                        showChartValuesInPercentage: true,
+                                        showChartValueBackground: true,
+                                        showChartValues: true,
+                                        showChartValuesOutside: true,
+                                        decimalPlaces: 1,
+                                      ),
+                                    ),
+                                  ),
                                 ),
-                              ),),
-                            ),)
-                          ],
-                        ),);
+                              )
+                            ],
+                          ),
+                        );
                       }),
                 );
               }

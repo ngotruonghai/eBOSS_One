@@ -17,9 +17,6 @@ class MailLogin extends StatefulWidget {
 }
 
 class _MailLoginState extends State<MailLogin> {
-
-
-
   int checkLogin = 1;
   TextEditingController txtUser = TextEditingController();
   TextEditingController txtPassWord = TextEditingController();
@@ -29,29 +26,25 @@ class _MailLoginState extends State<MailLogin> {
 
   @override
   void initState() {
-
     super.initState();
 
     // Sử dụng SchedulerBinding để thực thi hàm sau khi widget đã được hiển thị.
-    SchedulerBinding.instance.addPostFrameCallback((_)  async {
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       // Hàm này sẽ được gọi sau khi widget đã được hiển thị.
 
-      if(prefs.containsKey('Token')==false){
+      if (prefs.containsKey('Token') == false) {
         LoadingOverlay.show(context);
         LoadingOverlay.hide(context);
-      }
-      else{
+      } else {
         LoadingOverlay.show(context);
-        txtUser.text=prefs.getString(KeyServices.KeyUserID).toString();
-        txtPassWord.text=prefs.getString(KeyServices.keyPassWord).toString();
+        txtUser.text = prefs.getString(KeyServices.KeyUserID).toString();
+        txtPassWord.text = prefs.getString(KeyServices.keyPassWord).toString();
         await Future.delayed(Duration(seconds: 3));
         LoadingOverlay.hide(context);
 
         await Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => HomeView()));
-
-
       }
     });
   }

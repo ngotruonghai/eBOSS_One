@@ -75,7 +75,7 @@ class ListCompanyNoticeViewModel extends StatelessWidget {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => DetailCompanyNoticeViewModel()),
+                                    builder: (context) => DetailCompanyNoticeViewModel(notificationID:data.notificationID.toString())),
                               );
                             },
                             child:  Icon(

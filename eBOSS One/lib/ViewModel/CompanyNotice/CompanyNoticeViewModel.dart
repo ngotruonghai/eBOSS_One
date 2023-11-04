@@ -33,8 +33,8 @@ class CompanyNoticeViewModel extends StatelessWidget {
                   children: [
                     Padding(padding: EdgeInsets.only(right: 10),
                     child: Icon(
-                      Icons.notifications,
-                      color: Colors.green,
+                      Icons.notifications_active_rounded,
+                      color: Colors.deepOrange,
                       size: 20,
                     )),
                     Container(
@@ -64,6 +64,8 @@ class CompanyNoticeViewModel extends StatelessWidget {
                       data!.singerName.toString(),
                       style: TextStyle(
                           fontSize: 13,
+                          color: Colors.black54,
+                          fontWeight: FontWeight.bold,
                           fontFamily: "Roboto"),
                     ),
                     Text(

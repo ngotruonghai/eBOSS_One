@@ -20,22 +20,25 @@ class _CalendarState extends State<Calendar> {
   @override
   build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xFFe67e22),
-        title: Text("Lịch quản lý"),
-      ),
       body: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 0),
         child: Column(
           children: [
             TableCalendar(
-              rowHeight: 43,
-              locale: "en_US",
+              rowHeight: 32,
+              locale: "vi_VN",
               firstDay: DateTime.utc(2010, 10, 16),
               lastDay: DateTime.utc(2030, 3, 14),
               focusedDay: today,
               onDaySelected: _onDaySelect,
               selectedDayPredicate: (day)=>isSameDay(day, today),
+              startingDayOfWeek: StartingDayOfWeek.monday,
+              headerStyle: HeaderStyle(
+                  titleCentered: true
+              ),
+              availableCalendarFormats: {
+                CalendarFormat.month: 'Month',
+              },
             )
           ],
         ),
