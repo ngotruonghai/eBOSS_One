@@ -39,7 +39,6 @@ class ListCompanyNoticeViewModel extends StatelessWidget {
                                     Icons.notifications,
                                     size: 20,
                                     color: Colors.green,
-
                                   ),),
                                 Column(
                                   children: [
