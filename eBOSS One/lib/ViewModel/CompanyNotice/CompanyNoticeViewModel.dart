@@ -33,9 +33,9 @@ class CompanyNoticeViewModel extends StatelessWidget {
                   children: [
                     Padding(padding: EdgeInsets.only(right: 10),
                     child: Icon(
-                      Icons.notifications_active_rounded,
-                      color: Colors.deepOrange,
-                      size: 20,
+                      Icons.notifications_on_sharp,
+                      color: Colors.orangeAccent,
+                      size: 15,
                     )),
                     Container(
                       width: screenWidth-70,
@@ -47,7 +47,7 @@ class CompanyNoticeViewModel extends StatelessWidget {
                             fontFamily: "Roboto",
                             fontWeight: FontWeight.bold),
                         overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
+                        maxLines: 2,
                       ),
                     )
                   ],

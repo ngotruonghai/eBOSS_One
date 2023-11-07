@@ -282,11 +282,11 @@ class _HomeScreen extends State<HomeScreen> {
                                         ),),),
                                         Padding(padding: EdgeInsets.only(top: 0,left: 30),
                                         child: Container(
-                                          width: 100,
-                                          height: 40,
+                                          width: 120,
+                                          height: 50,
                                           child: ElevatedButton(
                                             style: ElevatedButton.styleFrom(
-                                              primary: Color(0xFF0984e3), // Màu nền của nút
+                                              primary: Color(0xFFFED801C), // Màu nền của nút
                                               onPrimary: Colors.white,// Màu văn bản trên nút
                                               shape: RoundedRectangleBorder(
                                                 borderRadius: BorderRadius.circular(10.0), // Bo tròn góc
@@ -296,8 +296,8 @@ class _HomeScreen extends State<HomeScreen> {
 
 
                                               },
-                                            child: Text("VÀO LÀM",style: TextStyle(
-                                                fontSize: 13,
+                                            child: Text("CHECK IN",style: TextStyle(
+                                                fontSize: 15,
                                                 fontFamily: "Roboto",
                                                 color: Colors.white)),
                                           ),
@@ -315,11 +315,11 @@ class _HomeScreen extends State<HomeScreen> {
                                           ),),),
                                         Padding(padding: EdgeInsets.only(top: 0,right: 30),
                                           child: Container(
-                                            width: 100,
-                                            height: 40,
+                                            width: 120,
+                                            height: 50,
                                             child: ElevatedButton(
                                               style: ElevatedButton.styleFrom(
-                                                primary: Color(0xFF218c74), // Màu nền của nút
+                                                primary: Colors.blue, // Màu nền của nút
                                                 onPrimary: Colors.white, // Màu văn bản trên nút
                                                 shape: RoundedRectangleBorder(
                                                   borderRadius: BorderRadius.circular(8.0), // Bo tròn góc
@@ -329,10 +329,10 @@ class _HomeScreen extends State<HomeScreen> {
 
 
                                               },
-                                              child: Text("RA VỀ",style: TextStyle(
-                                                  fontSize: 13,
+                                              child: Text("CHECK OUT",style: TextStyle(
+                                                  fontSize: 15,
                                                   fontFamily: "Roboto",
-                                                  color: Colors.white)),
+                                                  color: Colors.white70)),
 
                                             ),
                                           ),),
@@ -385,7 +385,7 @@ class _HomeScreen extends State<HomeScreen> {
                                   style: TextStyle(
                                       fontSize: 13,
                                       fontFamily: "Roboto",
-                                      color: Colors.grey),
+                                      color: Colors.black87),
                                 )
                               ],
                             ),
@@ -416,7 +416,7 @@ class _HomeScreen extends State<HomeScreen> {
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Container(
-                                                width: 180,
+                                                width: 230,
                                                 height: 80,
                                                 child: Row(
                                                   mainAxisAlignment:
@@ -432,7 +432,7 @@ class _HomeScreen extends State<HomeScreen> {
                                                                 EdgeInsets.only(
                                                                     bottom: 10),
                                                             child: SizedBox(
-                                                              width: 180.0,
+                                                              width: 230,
                                                               child: Text(
                                                                   "[Giao diện] xử lý moclup giao diện trên mobile",
                                                                   overflow:
@@ -465,7 +465,7 @@ class _HomeScreen extends State<HomeScreen> {
                                                                 EdgeInsets.only(
                                                                     top: 5),
                                                             child: Container(
-                                                              width: 180,
+                                                              width: 230,
                                                               child: Divider(
                                                                 color:
                                                                     Colors.grey,
@@ -480,19 +480,37 @@ class _HomeScreen extends State<HomeScreen> {
                                                               EdgeInsets.only(
                                                                   top: 5),
                                                           child: Container(
-                                                            width: 150,
+                                                            width: 230,
                                                             child: Row(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceBetween,
+                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                               children: <Widget>[
-                                                                Icon(
-                                                                  Icons
-                                                                      .access_time_filled_sharp,
-                                                                  color: Colors
-                                                                      .blue,
-                                                                  size: 20,
+                                                                Row(
+                                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                                  children: [
+                                                                    Icon(
+                                                                      Icons
+                                                                          .access_time_filled_sharp,
+                                                                      color: Colors
+                                                                          .blue,
+                                                                      size: 20,
+                                                                    ),
+                                                                    Icon(
+                                                                      Icons
+                                                                          .attach_file,
+                                                                      color: Colors
+                                                                          .black,
+                                                                      size: 20,
+                                                                    ),
+                                                                    Icon(
+                                                                      Icons
+                                                                          .bookmark,
+                                                                      color: Colors
+                                                                          .red,
+                                                                      size: 20,
+                                                                    ),
+                                                                  ],
                                                                 ),
+
                                                                 Text(
                                                                     "Quá hạn 15 ngày",
                                                                     style: TextStyle(
@@ -500,6 +518,24 @@ class _HomeScreen extends State<HomeScreen> {
                                                                             13,
                                                                         fontFamily:
                                                                             "Roboto")),
+                                                                Container(
+                                                                  width: 30,
+                                                                  height: 20,
+                                                                  decoration: BoxDecoration(
+                                                                    color: Colors.deepOrangeAccent,
+                                                                    borderRadius: BorderRadius.circular(20)
+                                                                  ),
+                                                                  child: Center(
+                                                                    child: Text(
+                                                                      'Mới',
+                                                                      style: TextStyle(
+                                                                        fontSize: 13,
+                                                                        color: Colors.white
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                )
+
                                                               ],
                                                             ),
                                                           ),
@@ -515,64 +551,64 @@ class _HomeScreen extends State<HomeScreen> {
                                           color: Colors.white,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                BorderRadius.circular(10.0),
+                                            BorderRadius.circular(10.0),
                                           ),
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Container(
-                                                width: 180,
+                                                width: 230,
                                                 height: 80,
                                                 child: Row(
                                                   mainAxisAlignment:
-                                                      MainAxisAlignment.start,
+                                                  MainAxisAlignment.start,
                                                   children: [
                                                     Column(
                                                       crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
+                                                      CrossAxisAlignment
+                                                          .start,
                                                       children: <Widget>[
                                                         Padding(
                                                             padding:
-                                                                EdgeInsets.only(
-                                                                    bottom: 10),
+                                                            EdgeInsets.only(
+                                                                bottom: 10),
                                                             child: SizedBox(
-                                                              width: 180.0,
+                                                              width: 230,
                                                               child: Text(
                                                                   "[Giao diện] xử lý moclup giao diện trên mobile",
                                                                   overflow:
-                                                                      TextOverflow
-                                                                          .ellipsis,
+                                                                  TextOverflow
+                                                                      .ellipsis,
                                                                   style: TextStyle(
                                                                       fontSize:
-                                                                          13,
+                                                                      13,
                                                                       fontFamily:
-                                                                          "Roboto",
+                                                                      "Roboto",
                                                                       color: Colors
                                                                           .black,
                                                                       fontWeight:
-                                                                          FontWeight
-                                                                              .bold)),
+                                                                      FontWeight
+                                                                          .bold)),
                                                             )),
                                                         Padding(
                                                             padding:
-                                                                EdgeInsets.only(
-                                                                    top: 0),
+                                                            EdgeInsets.only(
+                                                                top: 0),
                                                             child: Text(
                                                               "Dự an",
                                                               style: TextStyle(
                                                                   fontFamily:
-                                                                      "Roboto",
+                                                                  "Roboto",
                                                                   fontSize: 13),
                                                             )),
                                                         Padding(
                                                             padding:
-                                                                EdgeInsets.only(
-                                                                    top: 5),
+                                                            EdgeInsets.only(
+                                                                top: 5),
                                                             child: Container(
-                                                              width: 180,
+                                                              width: 230,
                                                               child: Divider(
                                                                 color:
-                                                                    Colors.grey,
+                                                                Colors.grey,
                                                                 thickness: 1.0,
                                                                 indent: 0,
                                                                 endIndent: 0,
@@ -581,29 +617,65 @@ class _HomeScreen extends State<HomeScreen> {
                                                             )),
                                                         Padding(
                                                           padding:
-                                                              EdgeInsets.only(
-                                                                  top: 5),
+                                                          EdgeInsets.only(
+                                                              top: 5),
                                                           child: Container(
-                                                            width: 150,
+                                                            width: 230,
                                                             child: Row(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceBetween,
+                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                               children: <Widget>[
-                                                                Icon(
-                                                                  Icons
-                                                                      .access_time_filled_sharp,
-                                                                  color: Colors
-                                                                      .blue,
-                                                                  size: 20,
+                                                                Row(
+                                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                                  children: [
+                                                                    Icon(
+                                                                      Icons
+                                                                          .access_time_filled_sharp,
+                                                                      color: Colors
+                                                                          .blue,
+                                                                      size: 20,
+                                                                    ),
+                                                                    Icon(
+                                                                      Icons
+                                                                          .attach_file,
+                                                                      color: Colors
+                                                                          .black,
+                                                                      size: 20,
+                                                                    ),
+                                                                    Icon(
+                                                                      Icons
+                                                                          .bookmark,
+                                                                      color: Colors
+                                                                          .red,
+                                                                      size: 20,
+                                                                    ),
+                                                                  ],
                                                                 ),
+
                                                                 Text(
                                                                     "Quá hạn 15 ngày",
                                                                     style: TextStyle(
                                                                         fontSize:
-                                                                            13,
+                                                                        13,
                                                                         fontFamily:
-                                                                            "Roboto")),
+                                                                        "Roboto")),
+                                                                Container(
+                                                                  width: 30,
+                                                                  height: 20,
+                                                                  decoration: BoxDecoration(
+                                                                      color: Colors.deepOrangeAccent,
+                                                                      borderRadius: BorderRadius.circular(20)
+                                                                  ),
+                                                                  child: Center(
+                                                                    child: Text(
+                                                                      'Mới',
+                                                                      style: TextStyle(
+                                                                          fontSize: 13,
+                                                                          color: Colors.white
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                )
+
                                                               ],
                                                             ),
                                                           ),
@@ -619,64 +691,64 @@ class _HomeScreen extends State<HomeScreen> {
                                           color: Colors.white,
                                           shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                BorderRadius.circular(10.0),
+                                            BorderRadius.circular(10.0),
                                           ),
                                           child: Padding(
                                             padding: const EdgeInsets.all(8.0),
                                             child: Container(
-                                                width: 180,
+                                                width: 230,
                                                 height: 80,
                                                 child: Row(
                                                   mainAxisAlignment:
-                                                      MainAxisAlignment.start,
+                                                  MainAxisAlignment.start,
                                                   children: [
                                                     Column(
                                                       crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
+                                                      CrossAxisAlignment
+                                                          .start,
                                                       children: <Widget>[
                                                         Padding(
                                                             padding:
-                                                                EdgeInsets.only(
-                                                                    bottom: 10),
+                                                            EdgeInsets.only(
+                                                                bottom: 10),
                                                             child: SizedBox(
-                                                              width: 180.0,
+                                                              width: 230,
                                                               child: Text(
                                                                   "[Giao diện] xử lý moclup giao diện trên mobile",
                                                                   overflow:
-                                                                      TextOverflow
-                                                                          .ellipsis,
+                                                                  TextOverflow
+                                                                      .ellipsis,
                                                                   style: TextStyle(
                                                                       fontSize:
-                                                                          13,
+                                                                      13,
                                                                       fontFamily:
-                                                                          "Roboto",
+                                                                      "Roboto",
                                                                       color: Colors
                                                                           .black,
                                                                       fontWeight:
-                                                                          FontWeight
-                                                                              .bold)),
+                                                                      FontWeight
+                                                                          .bold)),
                                                             )),
                                                         Padding(
                                                             padding:
-                                                                EdgeInsets.only(
-                                                                    top: 0),
+                                                            EdgeInsets.only(
+                                                                top: 0),
                                                             child: Text(
                                                               "Dự an",
                                                               style: TextStyle(
                                                                   fontFamily:
-                                                                      "Roboto",
+                                                                  "Roboto",
                                                                   fontSize: 13),
                                                             )),
                                                         Padding(
                                                             padding:
-                                                                EdgeInsets.only(
-                                                                    top: 5),
+                                                            EdgeInsets.only(
+                                                                top: 5),
                                                             child: Container(
-                                                              width: 180,
+                                                              width: 230,
                                                               child: Divider(
                                                                 color:
-                                                                    Colors.grey,
+                                                                Colors.grey,
                                                                 thickness: 1.0,
                                                                 indent: 0,
                                                                 endIndent: 0,
@@ -685,29 +757,65 @@ class _HomeScreen extends State<HomeScreen> {
                                                             )),
                                                         Padding(
                                                           padding:
-                                                              EdgeInsets.only(
-                                                                  top: 5),
+                                                          EdgeInsets.only(
+                                                              top: 5),
                                                           child: Container(
-                                                            width: 150,
+                                                            width: 230,
                                                             child: Row(
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceBetween,
+                                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                                               children: <Widget>[
-                                                                Icon(
-                                                                  Icons
-                                                                      .access_time_filled_sharp,
-                                                                  color: Colors
-                                                                      .blue,
-                                                                  size: 20,
+                                                                Row(
+                                                                  mainAxisAlignment: MainAxisAlignment.start,
+                                                                  children: [
+                                                                    Icon(
+                                                                      Icons
+                                                                          .access_time_filled_sharp,
+                                                                      color: Colors
+                                                                          .blue,
+                                                                      size: 20,
+                                                                    ),
+                                                                    Icon(
+                                                                      Icons
+                                                                          .attach_file,
+                                                                      color: Colors
+                                                                          .black,
+                                                                      size: 20,
+                                                                    ),
+                                                                    Icon(
+                                                                      Icons
+                                                                          .bookmark,
+                                                                      color: Colors
+                                                                          .red,
+                                                                      size: 20,
+                                                                    ),
+                                                                  ],
                                                                 ),
+
                                                                 Text(
                                                                     "Quá hạn 15 ngày",
                                                                     style: TextStyle(
                                                                         fontSize:
-                                                                            13,
+                                                                        13,
                                                                         fontFamily:
-                                                                            "Roboto")),
+                                                                        "Roboto")),
+                                                                Container(
+                                                                  width: 30,
+                                                                  height: 20,
+                                                                  decoration: BoxDecoration(
+                                                                      color: Colors.deepOrangeAccent,
+                                                                      borderRadius: BorderRadius.circular(20)
+                                                                  ),
+                                                                  child: Center(
+                                                                    child: Text(
+                                                                      'Mới',
+                                                                      style: TextStyle(
+                                                                          fontSize: 13,
+                                                                          color: Colors.white
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                )
+
                                                               ],
                                                             ),
                                                           ),
@@ -724,237 +832,237 @@ class _HomeScreen extends State<HomeScreen> {
                                   )),
                             ),
                           ),
-                          Padding(
-                            padding:
-                                EdgeInsets.only(top: 20, left: 10, right: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text("Dự án",
-                                    style: TextStyle(
-                                        fontSize: 15,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold,
-                                        fontFamily: "Roboto")),
-                                InkWell(
-                                  child: Text("Xem thêm",style: TextStyle(
-                                    color: Color(0xFF4B7BE5),
-                                    fontSize: 13,
-                                    fontFamily: "Roboto"
-                                  ),),
-                                  onTap: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => TaskDetail()),
-                                    );
-                                  },
-                                ),
-                              ],
-                            ),
-                          ),
-                          Padding(
-                            padding:
-                                EdgeInsets.only(top: 10, left: 10, right: 10),
-                            child: SingleChildScrollView(
-                                scrollDirection:
-                                    Axis.horizontal, // Đặt hướng cuộn là ngang
-                                child: ConstrainedBox(
-                                  constraints: BoxConstraints(
-                                      maxHeight:
-                                          200, // Đặt kích thước tối đa theo ý muốn
-                                      maxWidth: double
-                                          .infinity // Để ngăn chặn nó bị co lại
-                                      ),
-                                  child: Row(
-                                    children: <Widget>[
-                                      Card(
-                                        color: Colors.white,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Container(
-                                              width: 180,
-                                              height: 60,
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                children: [
-                                                  Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: <Widget>[
-                                                      Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  bottom: 10),
-                                                          child: SizedBox(
-                                                            width: 180.0,
-                                                            child: Text(
-                                                                "[Giao diện] xử lý moclup giao diện trên mobile",
-                                                                overflow:
-                                                                    TextOverflow
-                                                                        .ellipsis,
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        13,
-                                                                    fontFamily:
-                                                                        "Roboto",
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold)),
-                                                          )),
-                                                      Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  top: 0),
-                                                          child: Text(
-                                                            "Dự an",
-                                                            style: TextStyle(
-                                                                fontFamily:
-                                                                    "Roboto",
-                                                                fontSize: 13),
-                                                          )),
-                                                    ],
-                                                  ),
-                                                ],
-                                              )),
-                                        ),
-                                        elevation: 4.0,
-                                      ),
-                                      Card(
-                                        color: Colors.white,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Container(
-                                              width: 180,
-                                              height: 50,
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                children: [
-                                                  Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: <Widget>[
-                                                      Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  bottom: 10),
-                                                          child: SizedBox(
-                                                            width: 180.0,
-                                                            child: Text(
-                                                                "[Giao diện] xử lý moclup giao diện trên mobile",
-                                                                overflow:
-                                                                    TextOverflow
-                                                                        .ellipsis,
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        13,
-                                                                    fontFamily:
-                                                                        "Roboto",
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold)),
-                                                          )),
-                                                      Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  top: 0),
-                                                          child: Text(
-                                                            "Dự an",
-                                                            style: TextStyle(
-                                                                fontFamily:
-                                                                    "Roboto",
-                                                                fontSize: 13),
-                                                          )),
-                                                    ],
-                                                  ),
-                                                ],
-                                              )),
-                                        ),
-                                        elevation: 4.0,
-                                      ),
-                                      Card(
-                                        color: Colors.white,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(10.0),
-                                        ),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(8.0),
-                                          child: Container(
-                                              width: 180,
-                                              height: 50,
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                children: [
-                                                  Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: <Widget>[
-                                                      Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  bottom: 10),
-                                                          child: SizedBox(
-                                                            width: 180.0,
-                                                            child: Text(
-                                                                "[Giao diện] xử lý moclup giao diện trên mobile",
-                                                                overflow:
-                                                                    TextOverflow
-                                                                        .ellipsis,
-                                                                style: TextStyle(
-                                                                    fontSize:
-                                                                        13,
-                                                                    fontFamily:
-                                                                        "Roboto",
-                                                                    color: Colors
-                                                                        .black,
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .bold)),
-                                                          )),
-                                                      Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  top: 0),
-                                                          child: Text(
-                                                            "Dự an",
-                                                            style: TextStyle(
-                                                                fontFamily:
-                                                                    "Roboto",
-                                                                fontSize: 13),
-                                                          )),
-                                                    ],
-                                                  ),
-                                                ],
-                                              )),
-                                        ),
-                                        elevation: 4.0,
-                                      ),
-                                    ],
-                                  ),
-                                )),
-                          ),
+                          // Padding(
+                          //   padding:
+                          //       EdgeInsets.only(top: 20, left: 10, right: 10),
+                          //   child: Row(
+                          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //     children: [
+                          //       Text("Dự án",
+                          //           style: TextStyle(
+                          //               fontSize: 15,
+                          //               color: Colors.black,
+                          //               fontWeight: FontWeight.bold,
+                          //               fontFamily: "Roboto")),
+                          //       InkWell(
+                          //         child: Text("Xem thêm",style: TextStyle(
+                          //           color: Color(0xFF4B7BE5),
+                          //           fontSize: 13,
+                          //           fontFamily: "Roboto"
+                          //         ),),
+                          //         onTap: () {
+                          //           Navigator.push(
+                          //             context,
+                          //             MaterialPageRoute(
+                          //                 builder: (context) => TaskDetail()),
+                          //           );
+                          //         },
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
+                          // Padding(
+                          //   padding:
+                          //       EdgeInsets.only(top: 10, left: 10, right: 10),
+                          //   child: SingleChildScrollView(
+                          //       scrollDirection:
+                          //           Axis.horizontal, // Đặt hướng cuộn là ngang
+                          //       child: ConstrainedBox(
+                          //         constraints: BoxConstraints(
+                          //             maxHeight:
+                          //                 200, // Đặt kích thước tối đa theo ý muốn
+                          //             maxWidth: double
+                          //                 .infinity // Để ngăn chặn nó bị co lại
+                          //             ),
+                          //         child: Row(
+                          //           children: <Widget>[
+                          //             Card(
+                          //               color: Colors.white,
+                          //               shape: RoundedRectangleBorder(
+                          //                 borderRadius:
+                          //                     BorderRadius.circular(10.0),
+                          //               ),
+                          //               child: Padding(
+                          //                 padding: const EdgeInsets.all(8.0),
+                          //                 child: Container(
+                          //                     width: 180,
+                          //                     height: 60,
+                          //                     child: Row(
+                          //                       mainAxisAlignment:
+                          //                           MainAxisAlignment.start,
+                          //                       children: [
+                          //                         Column(
+                          //                           crossAxisAlignment:
+                          //                               CrossAxisAlignment
+                          //                                   .start,
+                          //                           children: <Widget>[
+                          //                             Padding(
+                          //                                 padding:
+                          //                                     EdgeInsets.only(
+                          //                                         bottom: 10),
+                          //                                 child: SizedBox(
+                          //                                   width: 180.0,
+                          //                                   child: Text(
+                          //                                       "[Giao diện] xử lý moclup giao diện trên mobile",
+                          //                                       overflow:
+                          //                                           TextOverflow
+                          //                                               .ellipsis,
+                          //                                       style: TextStyle(
+                          //                                           fontSize:
+                          //                                               13,
+                          //                                           fontFamily:
+                          //                                               "Roboto",
+                          //                                           color: Colors
+                          //                                               .black,
+                          //                                           fontWeight:
+                          //                                               FontWeight
+                          //                                                   .bold)),
+                          //                                 )),
+                          //                             Padding(
+                          //                                 padding:
+                          //                                     EdgeInsets.only(
+                          //                                         top: 0),
+                          //                                 child: Text(
+                          //                                   "Dự an",
+                          //                                   style: TextStyle(
+                          //                                       fontFamily:
+                          //                                           "Roboto",
+                          //                                       fontSize: 13),
+                          //                                 )),
+                          //                           ],
+                          //                         ),
+                          //                       ],
+                          //                     )),
+                          //               ),
+                          //               elevation: 4.0,
+                          //             ),
+                          //             Card(
+                          //               color: Colors.white,
+                          //               shape: RoundedRectangleBorder(
+                          //                 borderRadius:
+                          //                     BorderRadius.circular(10.0),
+                          //               ),
+                          //               child: Padding(
+                          //                 padding: const EdgeInsets.all(8.0),
+                          //                 child: Container(
+                          //                     width: 180,
+                          //                     height: 50,
+                          //                     child: Row(
+                          //                       mainAxisAlignment:
+                          //                           MainAxisAlignment.start,
+                          //                       children: [
+                          //                         Column(
+                          //                           crossAxisAlignment:
+                          //                               CrossAxisAlignment
+                          //                                   .start,
+                          //                           children: <Widget>[
+                          //                             Padding(
+                          //                                 padding:
+                          //                                     EdgeInsets.only(
+                          //                                         bottom: 10),
+                          //                                 child: SizedBox(
+                          //                                   width: 180.0,
+                          //                                   child: Text(
+                          //                                       "[Giao diện] xử lý moclup giao diện trên mobile",
+                          //                                       overflow:
+                          //                                           TextOverflow
+                          //                                               .ellipsis,
+                          //                                       style: TextStyle(
+                          //                                           fontSize:
+                          //                                               13,
+                          //                                           fontFamily:
+                          //                                               "Roboto",
+                          //                                           color: Colors
+                          //                                               .black,
+                          //                                           fontWeight:
+                          //                                               FontWeight
+                          //                                                   .bold)),
+                          //                                 )),
+                          //                             Padding(
+                          //                                 padding:
+                          //                                     EdgeInsets.only(
+                          //                                         top: 0),
+                          //                                 child: Text(
+                          //                                   "Dự an",
+                          //                                   style: TextStyle(
+                          //                                       fontFamily:
+                          //                                           "Roboto",
+                          //                                       fontSize: 13),
+                          //                                 )),
+                          //                           ],
+                          //                         ),
+                          //                       ],
+                          //                     )),
+                          //               ),
+                          //               elevation: 4.0,
+                          //             ),
+                          //             Card(
+                          //               color: Colors.white,
+                          //               shape: RoundedRectangleBorder(
+                          //                 borderRadius:
+                          //                     BorderRadius.circular(10.0),
+                          //               ),
+                          //               child: Padding(
+                          //                 padding: const EdgeInsets.all(8.0),
+                          //                 child: Container(
+                          //                     width: 180,
+                          //                     height: 50,
+                          //                     child: Row(
+                          //                       mainAxisAlignment:
+                          //                           MainAxisAlignment.start,
+                          //                       children: [
+                          //                         Column(
+                          //                           crossAxisAlignment:
+                          //                               CrossAxisAlignment
+                          //                                   .start,
+                          //                           children: <Widget>[
+                          //                             Padding(
+                          //                                 padding:
+                          //                                     EdgeInsets.only(
+                          //                                         bottom: 10),
+                          //                                 child: SizedBox(
+                          //                                   width: 180.0,
+                          //                                   child: Text(
+                          //                                       "[Giao diện] xử lý moclup giao diện trên mobile",
+                          //                                       overflow:
+                          //                                           TextOverflow
+                          //                                               .ellipsis,
+                          //                                       style: TextStyle(
+                          //                                           fontSize:
+                          //                                               13,
+                          //                                           fontFamily:
+                          //                                               "Roboto",
+                          //                                           color: Colors
+                          //                                               .black,
+                          //                                           fontWeight:
+                          //                                               FontWeight
+                          //                                                   .bold)),
+                          //                                 )),
+                          //                             Padding(
+                          //                                 padding:
+                          //                                     EdgeInsets.only(
+                          //                                         top: 0),
+                          //                                 child: Text(
+                          //                                   "Dự an",
+                          //                                   style: TextStyle(
+                          //                                       fontFamily:
+                          //                                           "Roboto",
+                          //                                       fontSize: 13),
+                          //                                 )),
+                          //                           ],
+                          //                         ),
+                          //                       ],
+                          //                     )),
+                          //               ),
+                          //               elevation: 4.0,
+                          //             ),
+                          //           ],
+                          //         ),
+                          //       )),
+                          // ),
                           Padding(
                             padding: EdgeInsets.only(
-                                top: 20, left: 10, right: 10, bottom: 10),
+                                top: 30, left: 10, right: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -986,7 +1094,9 @@ class _HomeScreen extends State<HomeScreen> {
                             //CompanyNoticeViewModel
                             children: [
                               if (listdata == null)
-                                Text("Đang Load")
+                                Center(
+                                  child: Text("Loading..."),
+                                )
                               else
                                 Column(
                                   children: listdata!

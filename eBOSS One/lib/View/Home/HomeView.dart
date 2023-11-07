@@ -45,7 +45,7 @@ class _HomeViewState extends State<HomeView> {
               width: 30,
               height: 30,
             ),
-            Text(" eBOSS ONE", style: TextStyle(fontSize: 30))
+            Text("eBOSS ONE", style: TextStyle(fontSize: 30))
           ],
         ),
         centerTitle: true,
@@ -64,7 +64,7 @@ class _HomeViewState extends State<HomeView> {
         }),
         actions: <Widget>[
           IconButton(
-              onPressed: () {}, icon: const Icon(Icons.notifications_none))
+              onPressed: () {}, icon: const Icon(Icons.notifications_sharp))
         ],
       ),
       drawer: const DrawerHome(),
