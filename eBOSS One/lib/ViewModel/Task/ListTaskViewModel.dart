@@ -43,7 +43,7 @@ class ListTask extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => TaskDetailView( workID: data.workID.toString())),
+                            builder: (context) => TaskDetailView( workAID: data.workAID.toString())),
                       );
                     },
                     child: Icon(

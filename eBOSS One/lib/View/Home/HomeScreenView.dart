@@ -1062,7 +1062,7 @@ class _HomeScreen extends State<HomeScreen> {
                           // ),
                           Padding(
                             padding: EdgeInsets.only(
-                                top: 30, left: 10, right: 10),
+                                top: 50, left: 10, right: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [

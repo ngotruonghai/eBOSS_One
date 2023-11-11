@@ -1,30 +1,54 @@
 import 'package:flutter/material.dart';
 
-class TaskDetailView extends StatefulWidget {
-  TaskDetailView({super.key, required this.workID});
+import '../../Model/MissionUnFinish/DataMissionDetailsModel.dart';
+import '../../Services/NetWork/NetWorkRequest.dart';
 
-  final String workID;
+class TaskDetailView extends StatefulWidget {
+  TaskDetailView({super.key, required this.workAID});
+
+  final String workAID;
   @override
   State<TaskDetailView> createState() => _TaskDetailView();
 }
 
 class _TaskDetailView extends State<TaskDetailView> {
-
-
-   //function
-   Future<bool> loadData() async {
-     await Future.delayed(Duration(seconds: 2)); // Giả lập thời gian tải
-     return true;
-   }
-
-   Future<void> _refreshData() async {
-     // Giả định rằng bạn sẽ làm thao tác làm mới dữ liệu ở đây.
-     await Future.delayed(Duration(seconds: 0));
-     setState(() {});
-   }
-
   @override
+
   Widget build(BuildContext context) {
+
+    List<Data>? listdata;
+    Map<String, dynamic> request = {
+      'workAID': widget.workAID,
+      'language': 'NameVietnamese',
+    };
+    Future<String> loaddataMissionUnFinish() async {
+      try {
+        final responses = await NetWorkRequest.PostJWT(
+            "/eBOSS/api/MissionUnFinish/DataMissionDetails",request);
+        final UserInfo = DataMissionDetailsModel.fromJson(responses);
+        listdata = UserInfo.data;
+        print(listdata![0].handlerName);
+        return "Succes";
+      } catch (e) {
+        return e.toString();
+      }
+    }
+
+    //function
+    Future<bool> loadData() async {
+      await Future.delayed(Duration(seconds: 0)); // Giả lập thời gian tải
+      await loaddataMissionUnFinish();
+      return true;
+    }
+
+    Future<void> _refreshData() async {
+      // Giả định rằng bạn sẽ làm thao tác làm mới dữ liệu ở đây.
+      await Future.delayed(Duration(seconds: 0));
+      await loaddataMissionUnFinish();
+      setState(() {});
+    }
+
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Chi tiết nhiệm vụ"),
@@ -57,7 +81,7 @@ class _TaskDetailView extends State<TaskDetailView> {
                                 padding: EdgeInsets.only(top: 10),
                                 child: Center(
                                   child: Text(
-                                    "Thông tin chung",
+                                    "THÔNG TIN CHUNG",
                                     style: TextStyle(
                                         fontSize: 20,
                                         fontWeight: FontWeight.bold,
@@ -89,11 +113,10 @@ class _TaskDetailView extends State<TaskDetailView> {
                                       ),
                                       child: Container(
                                         width: double.infinity,
-                                        height: 50,
                                         child: Padding(
-                                          padding: EdgeInsets.only(left: 15, top: 15),
+                                          padding: EdgeInsets.only(left: 15, top: 15,bottom: 15),
                                           child: Text(
-                                            "Đợi nhận việc",
+                                            "Mức độ ưu tiên: "+listdata![0].piorityName.toString()+"\n \nChi tiết: "+listdata![0].progressDescription.toString(),
                                             style: TextStyle(
                                                 fontSize: 13,
                                                 color: Colors.black,
@@ -127,7 +150,7 @@ class _TaskDetailView extends State<TaskDetailView> {
                                         child: Padding(
                                           padding: EdgeInsets.only(left: 15, top: 15,bottom: 15,right: 15),
                                           child: Text(
-                                            "Viết API danh sách công  việc",
+                                            listdata![0].workAllSummary.toString(),
                                             style: TextStyle(
                                                 fontSize: 13,
                                                 color: Colors.black,
@@ -162,7 +185,7 @@ class _TaskDetailView extends State<TaskDetailView> {
                                         child: Padding(
                                           padding: EdgeInsets.only(left: 15, top: 15,bottom: 15,right: 15),
                                           child: Text(
-                                            ".Thiết lập API \n .Kết nối DB \n .Test chức năng",
+                                            "code",
                                             style: TextStyle(
                                                 fontSize: 13,
                                                 color: Colors.black,
@@ -174,7 +197,7 @@ class _TaskDetailView extends State<TaskDetailView> {
                               Padding(
                                 padding: EdgeInsets.only(top: 20),
                                 child: Text(
-                                  "Dự án phần mềm",
+                                  "Người ghi",
                                   style: TextStyle(
                                       fontSize: 13,
                                       color: Colors.black87,
@@ -197,11 +220,11 @@ class _TaskDetailView extends State<TaskDetailView> {
                                         child: Padding(
                                           padding: EdgeInsets.only(left: 15, top: 15,bottom: 15,right: 15),
                                           child: Text(
-                                            "Hưng NHẤT ERP",
+                                            listdata![0].handlerName.toString(),
                                             style: TextStyle(
                                                 fontSize: 13,
                                                 color: Colors.black,
-                                                fontWeight: FontWeight.bold,
+                                                //fontWeight: FontWeight.bold,
                                                 fontFamily: "Roboto"),
                                           ),
                                         ),
@@ -210,7 +233,7 @@ class _TaskDetailView extends State<TaskDetailView> {
                               Padding(
                                 padding: EdgeInsets.only(top: 20),
                                 child: Text(
-                                  "Dự án bảo trì",
+                                  "Người giao",
                                   style: TextStyle(
                                       fontSize: 13,
                                       color: Colors.black87,
@@ -233,11 +256,47 @@ class _TaskDetailView extends State<TaskDetailView> {
                                         child: Padding(
                                           padding: EdgeInsets.only(left: 15, top: 15,bottom: 15,right: 15),
                                           child: Text(
-                                            "Hưng NHẤT ERP ",
+                                            listdata![0].navigatorName.toString(),
                                             style: TextStyle(
                                                 fontSize: 13,
                                                 color: Colors.black,
-                                                fontWeight: FontWeight.bold,
+                                                //fontWeight: FontWeight.bold,
+                                                fontFamily: "Roboto"),
+                                          ),
+                                        ),
+                                      ))),
+
+                              Padding(
+                                padding: EdgeInsets.only(top: 20),
+                                child: Text(
+                                  "Người nhận",
+                                  style: TextStyle(
+                                      fontSize: 13,
+                                      color: Colors.black87,
+                                      fontFamily: "Roboto"),
+                                ),
+                              ),
+                              Padding(
+                                  padding: EdgeInsets.only(top: 1),
+                                  child: Card(
+                                      color: Colors.white60,
+                                      shape: RoundedRectangleBorder(
+                                        side: BorderSide(
+                                          color: Colors.white70,
+                                          width: 0.0,
+                                        ),
+                                        borderRadius: BorderRadius.circular(10.0),
+                                      ),
+                                      child: Container(
+                                        width: double.infinity,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(left: 15, top: 15,bottom: 15,right: 15),
+                                          child: Text(
+                                            listdata![0].receiverName.toString(),
+                                            style: TextStyle(
+                                                fontSize: 13,
+                                                color: Colors.black,
+                                                //fontWeight: FontWeight.bold,
                                                 fontFamily: "Roboto"),
                                           ),
                                         ),
@@ -306,7 +365,7 @@ class _TaskDetailView extends State<TaskDetailView> {
                                               child: Padding(
                                                 padding: EdgeInsets.only(left: 15, top: 15,bottom: 15,right: 15),
                                                 child: Text(
-                                                  "Hao < 1 giờ",
+                                                  "SolutionDescription",
                                                   style: TextStyle(
                                                       fontSize: 13,
                                                       color: Colors.black,
@@ -323,7 +382,7 @@ class _TaskDetailView extends State<TaskDetailView> {
                               Padding(
                                 padding: EdgeInsets.only(top: 20),
                                 child: Text(
-                                  "Ghi chú",
+                                  "Thông tin chi tiết",
                                   style: TextStyle(
                                       fontSize: 13,
                                       color: Colors.black87,
@@ -346,7 +405,7 @@ class _TaskDetailView extends State<TaskDetailView> {
                                         child: Padding(
                                           padding: EdgeInsets.only(left: 15, top: 15,bottom: 15,right: 15),
                                           child: Text(
-                                            "Không có gì",
+                                            listdata![0].workAllDetails.toString(),
                                             style: TextStyle(
                                                 fontSize: 13,
                                                 color: Colors.black,
